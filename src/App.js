@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Authenticate from "./components/auth/Authenticate";
+import Dashboard from "./components/dashboard/Dashboard";
+import { connect } from "react-redux";
+// import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'semantic-ui-css/semantic.min.css'
 
-function App() {
+function App(props) {
+  // debugger
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        {props.auth ? (
+          <Route
+            render={(routeProps) => <Dashboard {...props} {...routeProps} />}
+          />
+        ) : (
+          <Authenticate {...props} />
+        )}
+      </div>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(App);

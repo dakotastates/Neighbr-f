@@ -15,6 +15,7 @@ store.subscribe(() => {
   saveState(store.getState());
 });
 
+//const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
