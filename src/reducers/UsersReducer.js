@@ -1,4 +1,4 @@
-export default function UsersReducers(
+export default function UsersReducer(
   state = { user: {}, users: [], profile:{} },
   { type, payload }
 ) {

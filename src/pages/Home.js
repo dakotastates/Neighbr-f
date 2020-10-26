@@ -7,10 +7,10 @@ class Home extends React.Component {
 
     render(){
       const { user } = this.props;
-      // debugger
+      debugger
         return(
             <div>
-              <h1>Welcome {user.username}</h1>
+              <h1>Welcome </h1>
 
 
             </div>

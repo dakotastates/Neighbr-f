@@ -3,17 +3,12 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/AuthActions";
 import { Switch} from "react-router-dom";
 import PrivateRoute from "../../helpers/PrivateRoute";
-// import Navbar from "./Navbar";
+import Navbar from "./Navbar";
 import Home from "../../pages/Home";
-// import Problems from "../pages/Problems";
-// import About from "../pages/About";
-// import ReportProblem from "../components/problems/ReportProblem";
-// import ProblemShow from "../pages/ProblemShow";
-// import SubmitProposal from "../components/proposals/SubmitProposal";
-// import Profile from "../pages/Profile";
-// import Messages from "../pages/Messages";
-// import Projects from "../pages/Projects";
-// import Project from "../components/projects/Project";
+import About from "../../pages/About";
+import Profile from "../../pages/Profile";
+import Messages from "../../pages/Messages";
+
 // import AdminDashboard from "../components/admin/AdminDashboard";
 // import AdvisorDashboard from "../pages/Advisors";
 
@@ -51,7 +46,9 @@ function Dashboard(props) {
           </div>
 
           <Switch>
-
+            <PrivateRoute path="/profile/:id" component={Profile}/>
+            <PrivateRoute path="/about" component={About} />
+            <PrivateRoute path="/messages" component={Messages} />
             <PrivateRoute path="/" component={Home} />
 
           </Switch>

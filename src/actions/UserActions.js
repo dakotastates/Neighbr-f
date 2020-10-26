@@ -56,7 +56,7 @@ export const storeUser = (user) => {
   return async (dispatch) => {
     const res = await fetch("http://localhost:3000/api/v1/login", configObj);
     const json = await res.json();
-    // debugger
+    debugger
     if (json.message) {
       throw new Error(json.message /*+ " " + json.message*/);
     }
