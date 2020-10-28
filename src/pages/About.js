@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-class About extends React.Component {
+function About(props) {
 
 
-    render(){
+    
         return(
             <div>
               <h1>About NeighbR</h1>
@@ -12,7 +12,7 @@ class About extends React.Component {
 
             </div>
         )
-    }
+
 }
 
 

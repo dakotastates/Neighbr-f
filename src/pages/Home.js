@@ -1,21 +1,20 @@
 import React from 'react'
 import { connect } from "react-redux";
-// import ProfilesContainer from "../containers/ProfilesContainer";
+import NeighborsBoardContainer from "../containers/NeighborsBoardContainer";
+import ClosestNeighborsContainer from "../containers/ClosestNeighborsContainer";
 
 
-class Home extends React.Component {
 
-    render(){
-      const { user } = this.props;
-      debugger
+function Home(props) {
+
         return(
             <div>
-              <h1>Welcome </h1>
 
-
+              <NeighborsBoardContainer />
+              <ClosestNeighborsContainer />
             </div>
         )
-    }
+
 }
 
 const mapStateToProps = (state) => ({

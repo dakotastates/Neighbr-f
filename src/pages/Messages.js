@@ -3,10 +3,10 @@ import React from 'react'
 // import MessagesContainer from "../containers/MessagesContainer";
 
 
-class Messages extends React.Component {
+function Messages(props) {
 
 
-    render(){
+
         return(
             <div>
               <h1>Messages Page</h1>
@@ -14,7 +14,7 @@ class Messages extends React.Component {
 
             </div>
         )
-    }
+
 }
 
 

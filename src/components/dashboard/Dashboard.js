@@ -8,6 +8,8 @@ import Home from "../../pages/Home";
 import About from "../../pages/About";
 import Profile from "../../pages/Profile";
 import Messages from "../../pages/Messages";
+import Header from "../../components/dashboard/Header";
+import Footer from "../../components/dashboard/Footer";
 
 // import AdminDashboard from "../components/admin/AdminDashboard";
 // import AdvisorDashboard from "../pages/Advisors";
@@ -37,11 +39,12 @@ function Dashboard(props) {
 
             <div className="logout">
             <br/>
-              <button onClick={handleLogout}>Logout</button>
+
             </div>
           <br/>
 
-
+          <Header user={props.user}/>
+          <Navbar handleLogout={handleLogout} user={props.user}/>
 
           </div>
 
@@ -52,7 +55,7 @@ function Dashboard(props) {
             <PrivateRoute path="/" component={Home} />
 
           </Switch>
-
+          <Footer />
         </div>
     )
 

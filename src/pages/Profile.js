@@ -3,10 +3,9 @@ import React from 'react'
 // import ProfilesContainer from "../containers/ProfilesContainer";
 
 
-class Profile extends React.Component {
+function Profile(props) {
 
 
-    render(){
 
         return(
             <div>
@@ -16,7 +15,7 @@ class Profile extends React.Component {
 
             </div>
         )
-    }
+
 }
 
 
