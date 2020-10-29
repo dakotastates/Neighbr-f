@@ -1,194 +1,81 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
-import { Link } from 'react-router-dom';
-// import Home from "../pages/Home";
-
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-}));
+import React from 'react'
+import { NavLink } from 'react-router-dom';
 
 
-// debugger
-export default function NavBar(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+function Navbar(props) {
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  const link = {
+    width: '100px',
+    padding: '12px',
+    margin: '0 6px 6px',
+    background: 'blue',
+    textDecoration: 'none',
+    color: 'white',
+  }
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+    const { handleLogout } = props;
 
-  const links = [
-    {  text: "Home", link: "/" },
-    {  text: "Your Profile", link: `/profile/${props.user.id}` },
-    {  text: "Messages", link: "/messages" },
-    {  text: "About", link: "/about" },
-    {  text: "Logout", link: "/", action: `${props.handleLogout}` },
-  ];
-
-  const advisorLinks = [
-    {  text: "Advisor Dashboard", link: "/advisor/dashboard" },
-  ];
-
-  const adminLinks = [
-    {  text: "Admin Dashboard", link: "/admin/dashboard" },
-  ];
-// debugger
-let advisorLinkList;
-let adminLinkList;
-if (props.user.admin_level === 1){
-
-  advisorLinkList = <List>
-    {advisorLinks.map((link) => (
-      <ListItem button key={link.text} component={Link} to={link.link}  onClick={handleDrawerClose}>
-
-        <ListItemText primary={link.text} />
-
-      </ListItem>
-    ))}
-  </List>
-  // )
-} else if (props.user.admin_level === 2){
-  adminLinkList = <List>
-    {adminLinks.map((link) => (
-      <ListItem button key={link.text} component={Link} to={link.link}  onClick={handleDrawerClose}>
-
-        <ListItemText primary={link.text} />
-
-      </ListItem>
-    ))}
-  </List>
-}
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            NeighbR
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
+  return(
+    <div>
+    <NavLink
+        to="/"
+        /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+        exact
+        /* add styling to Navlink */
+        style={link}
+        /* add prop for activeStyle */
+        activeStyle={{
+          background: 'darkblue'
         }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {links.map((link) => (
-            <ListItem button key={link.text} component={Link} to={link.link}  onClick={handleDrawerClose}>
+      >Home</NavLink>
+      <NavLink
+          to="/messages"
+          /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+          exact
+          /* add styling to Navlink */
+          style={link}
+          /* add prop for activeStyle */
+          activeStyle={{
+            background: 'darkblue'
+          }}
+        >Messages</NavLink>
+        <NavLink
+            to="/profile"
+            /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+            exact
+            /* add styling to Navlink */
+            style={link}
+            /* add prop for activeStyle */
+            activeStyle={{
+              background: 'darkblue'
+            }}
+          >Profile</NavLink>
+      <NavLink
+          to="/about"
+          /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+          exact
+          /* add styling to Navlink */
+          style={link}
+          /* add prop for activeStyle */
+          activeStyle={{
+            background: 'darkblue'
+          }}
+        >About</NavLink>
+        <NavLink
+          to="/"
 
-              <ListItemText primary={link.text} />
-
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-
-        {advisorLinkList}
-        {adminLinkList}
-      </Drawer>
+          onClick={handleLogout}
+          /* add styling to Navlink */
+          style={link}
+          /* add prop for activeStyle */
+          activeStyle={{
+            background: 'darkblue'
+          }}
+        >Logout</NavLink>
 
     </div>
-  );
+
+  )
 }
+
+export default Navbar;

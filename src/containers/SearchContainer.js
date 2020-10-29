@@ -1,9 +1,11 @@
 import React from 'react'
+import SearchInput from "../components/search/SearchInput";
+
 
 function SearchContainer(props) {
 
   return (
-    <h1>Search Container</h1>
+    <SearchInput />
   )
 
 }

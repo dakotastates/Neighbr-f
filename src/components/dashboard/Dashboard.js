@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { logout } from "../../actions/AuthActions";
 import { Switch} from "react-router-dom";
 import PrivateRoute from "../../helpers/PrivateRoute";
-import Navbar from "./Navbar";
+// import Navbar from "./Navbar";
 import Home from "../../pages/Home";
 import About from "../../pages/About";
 import Profile from "../../pages/Profile";
@@ -34,17 +34,10 @@ function Dashboard(props) {
 // }
     return(
         <div>
-          <h1>NeighbR</h1>
+
           <div className="header">
 
-            <div className="logout">
-            <br/>
-
-            </div>
-          <br/>
-
-          <Header user={props.user}/>
-          <Navbar handleLogout={handleLogout} user={props.user}/>
+          <Header handleLogout={handleLogout} user={props.user}/>
 
           </div>
 
@@ -52,6 +45,7 @@ function Dashboard(props) {
             <PrivateRoute path="/profile/:id" component={Profile}/>
             <PrivateRoute path="/about" component={About} />
             <PrivateRoute path="/messages" component={Messages} />
+            <PrivateRoute path="/logout" component={Home} />
             <PrivateRoute path="/" component={Home} />
 
           </Switch>
