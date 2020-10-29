@@ -16,6 +16,7 @@ export default function BoardMessagesReducer(
       return {
         ...state,
         message: payload,
+        messages: [...state.messages, payload]
       };
 
       case "STORAGE_BOARD_MESSAGES":

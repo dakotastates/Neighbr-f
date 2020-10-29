@@ -2,12 +2,13 @@ const _boardMessageObject = (state) => ({
   board_message: {
     id: state.id,
     message: state.message,
-    user_id: state.user_id
+    user_id: state.user.id
   },
 
 });
 
 export const createBoardMessage = (state) => {
+  // debugger
   let configObj = {
     method: "POST",
     headers: {

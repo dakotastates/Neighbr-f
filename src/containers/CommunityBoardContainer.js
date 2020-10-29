@@ -7,6 +7,7 @@ import { storeBoardMessages, createBoardMessage } from "../actions/BoardMessageA
 
 
 function CommunityBoardContainer(props) {
+  // debugger
   useEffect(() => {
     props
     .storeBoardMessages();
@@ -15,12 +16,12 @@ function CommunityBoardContainer(props) {
     // });
   }, []);
 
-  const { boardMessages, createBoardMessage } = props;
+  const { boardMessages, createBoardMessage, user } = props;
   // debugger
 
   return (
     <div>
-      <CommunityBoardInput createBoardMessage={createBoardMessage}/>
+      <CommunityBoardInput createBoardMessage={createBoardMessage} user={user}/>
       <CommunityBoardMessages boardMessages = {boardMessages}/>
     </div>
   )
@@ -29,6 +30,7 @@ function CommunityBoardContainer(props) {
 
 const mapStateToProps = (state) => ({
   boardMessages: state.boardMessageStore.messages,
+  user: state.usersStore.user,
 });
 
 export default connect(mapStateToProps, { storeBoardMessages, createBoardMessage })(CommunityBoardContainer);

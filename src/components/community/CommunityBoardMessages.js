@@ -4,7 +4,7 @@ import CommunityBoardMessage from "./CommunityBoardMessage";
 
 function CommunityBoardMessages(props) {
   const { boardMessages } = props;
-
+// debugger
   const boardMessageList = boardMessages.map(message => {
       return (
         <CommunityBoardMessage
