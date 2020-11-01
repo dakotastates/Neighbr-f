@@ -120,7 +120,7 @@ export const updateUser = (state, user) => {
   };
 };
 
-export const showUser = (state) => {
+export const showUser = (id) => {
   // debugger
   const options = {
     method: "GET",
@@ -130,12 +130,12 @@ export const showUser = (state) => {
   };
   return async (dispatch) => {
 // eslint-disable-next-line
-    const res = await fetch("http://localhost:3000/api/v1/users" + `/${state.match.params.id}`, options);
+    const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}`, options);
     const json = await res.json();
     // debugger
     if (json.error) {
       // debugger
-      throw new Error(json.error + " " + json.message);
+      throw new Error(json.error);
     }
     dispatch({
       type: "SHOW_USER",

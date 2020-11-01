@@ -1,6 +1,6 @@
 import React from 'react'
-// import ProblemsContainer from "../components/problems/ProblemsContainer";
-// import ProfilesContainer from "../containers/ProfilesContainer";
+import ProfileContainer from "../containers/ProfileContainer";
+// import ProfileNav from "../components/profile/ProfileNav"
 
 
 function Profile(props) {
@@ -10,8 +10,7 @@ function Profile(props) {
         return(
             <div>
 
-              Profile page
-
+              <ProfileContainer {...props}/>
 
             </div>
         )
