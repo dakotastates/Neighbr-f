@@ -1,4 +1,5 @@
 import React from 'react'
+import MapContainer from "../containers/MapContainer";
 
 
 function Map(props) {
@@ -7,8 +8,8 @@ function Map(props) {
 
         return(
             <div>
-              <h1>Map page</h1>
-              <p>Map sfsfsfs</p>
+              <MapContainer />
+
 
             </div>
         )

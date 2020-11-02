@@ -1,10 +1,11 @@
 import React from 'react'
+import GoogleMap from "../components/map/GoogleMap";
 
 function MapContainer(props) {
 
   return (
     <div>
-      <h1>Map Container</h1>
+      <GoogleMap />
     </div>
   )
 
