@@ -7,6 +7,7 @@ import PrivateRoute from "../../helpers/PrivateRoute";
 import Home from "../../pages/Home";
 import About from "../../pages/About";
 import Profile from "../../pages/Profile";
+import AboutUser from "../../pages/AboutUser";
 import Map from "../../pages/Map";
 import Messages from "../../pages/Messages";
 import Header from "../../components/dashboard/Header";
@@ -43,6 +44,7 @@ function Dashboard(props) {
           </div>
 
           <Switch>
+            <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
             <PrivateRoute path="/profile/:id" component={Profile}/>
             <PrivateRoute path="/about" component={About} />
             <PrivateRoute path="/map" component={Map} />

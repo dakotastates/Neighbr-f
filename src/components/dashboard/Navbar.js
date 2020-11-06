@@ -29,6 +29,17 @@ function Navbar(props) {
         }}
       >Home</NavLink>
       <NavLink
+          to="/map"
+          /* set exact so it knows to only set activeStyle when route is deeply equal to link */
+          exact
+          /* add styling to Navlink */
+          style={link}
+          /* add prop for activeStyle */
+          activeStyle={{
+            background: 'darkblue'
+          }}
+        >Map</NavLink>
+      <NavLink
           to="/messages"
           /* set exact so it knows to only set activeStyle when route is deeply equal to link */
           exact
@@ -40,7 +51,7 @@ function Navbar(props) {
           }}
         >Messages</NavLink>
         <NavLink
-            to="/profile"
+            to={`/profile/${props.user.id}`}
             /* set exact so it knows to only set activeStyle when route is deeply equal to link */
             exact
             /* add styling to Navlink */
