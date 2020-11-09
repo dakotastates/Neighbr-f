@@ -10,10 +10,10 @@ function MapMarker(props) {
 
 
 
-    const {longitude, latitude} = props
+    const {user} = props
     return (
 
-      <Marker position={{ lat: {latitude}, lng: {longitude}}} />
+      <Marker position={{ lat: {user.latitude}, lng: {user.longitude}}} />
 
     )
   }
