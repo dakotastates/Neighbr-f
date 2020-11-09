@@ -37,7 +37,7 @@ export const createMessage = (state) => {
 
 };
 
-export const storeMessages = () => {
+export const storeMessages = (id) => {
   const options = {
     method: "GET",
     headers: {
@@ -46,7 +46,7 @@ export const storeMessages = () => {
   };
   return async (dispatch) => {
 
-    const res = await fetch("http://localhost:3000/api/v1/messages", options);
+    const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}/messages`, options);
     const json = await res.json();
     // debugger
     if (json.error) {

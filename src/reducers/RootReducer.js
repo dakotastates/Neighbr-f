@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   usersStore: UsersReducer,
   auth: AuthReducer,
   boardMessageStore: BoardMessagesReducer,
-  messageStore: MessagesReducer,
+  messagesStore: MessagesReducer,
 
 
 });
