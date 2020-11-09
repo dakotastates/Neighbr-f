@@ -8,6 +8,8 @@ const _userObject = (state) => ({
     email: state.email,
     bio: state.bio,
     avatar: state.avatar,
+    longitude: state.longitude,
+    latitude: state.latitude
     // admin_level: state.adminLevel
 
 
@@ -91,8 +93,8 @@ export const storeUsers = () => {
   };
 };
 
-export const updateUser = (state, user) => {
-  // debugger
+export const updateUser = (state, id) => {
+  debugger
   // console.log(state)
   let options = {
     method: "PATCH",
@@ -106,7 +108,7 @@ export const updateUser = (state, user) => {
 
   return async (dispatch) => {
     // eslint-disable-next-line
-    const res = await fetch("http://localhost:3000/api/v1/users" + `/${user.id}`, options);
+    const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}`, options);
 
     const json = await res.json();
     // debugger
