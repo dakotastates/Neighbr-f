@@ -48,7 +48,7 @@ export const storeMessages = (id) => {
 
     const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}/messages`, options);
     const json = await res.json();
-    // debugger
+    debugger
     if (json.error) {
       // debugger
       throw new Error(json.error + " " + json.message);

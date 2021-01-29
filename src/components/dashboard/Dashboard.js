@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 import { logout } from "../../actions/AuthActions";
+import { setUserLocation } from "../../actions/UserActions";
 import { Switch} from "react-router-dom";
 import PrivateRoute from "../../helpers/PrivateRoute";
 // import Navbar from "./Navbar";
@@ -18,6 +19,7 @@ import Footer from "../../components/dashboard/Footer";
 
 
 function Dashboard(props) {
+  const [loading, setLoading] = useState(false);
 
   const handleLogout = () => {
       props.logout();
@@ -25,42 +27,55 @@ function Dashboard(props) {
       localStorage.removeItem("token");
       props.history.push("/");
     };
-// debugger
 
-// let advisorDashboardRoute;
-// let adminDashboardRoute;
-// if (props.user.admin_level === 1){
-//   advisorDashboardRoute = <PrivateRoute path="/advisor/dashboard" component={AdvisorDashboard} />
-// } else if (props.user.admin_level === 2){
-//   adminDashboardRoute = <PrivateRoute path="/admin/dashboard" component={AdminDashboard} />
-// }
-    return(
-        <div>
+    useEffect(() => {
+      // debugger
+      props
+      .setUserLocation()
+      // debugger
+      .then(() => {
+        setLoading(true);
 
-          <div className="header">
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    }, []);
 
-          <Header handleLogout={handleLogout} user={props.user}/>
+    if (loading === false){
+          return(
+            <div>Fetching Location</div>
+          )
+        } else {
+        return (
+              <div>
 
-          </div>
+                <Switch>
+                  <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
+                  <PrivateRoute path="/profile/:id" component={Profile}/>
+                  <PrivateRoute path="/about" component={About} />
+                  <PrivateRoute path="/map" component={Map} />
+                  <PrivateRoute path="/messages" component={Messages} />
+                  <PrivateRoute path="/logout" component={Home} />
+                  <PrivateRoute path="/" component={Home} />
 
-          <Switch>
-            <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
-            <PrivateRoute path="/profile/:id" component={Profile}/>
-            <PrivateRoute path="/about" component={About} />
-            <PrivateRoute path="/map" component={Map} />
-            <PrivateRoute path="/messages" component={Messages} />
-            <PrivateRoute path="/logout" component={Home} />
-            <PrivateRoute path="/" component={Home} />
-
-          </Switch>
-          <Footer />
-        </div>
-    )
+                </Switch>
+                <Footer />
+              </div>
+        );
+      }
 
 }
 
 const mapStateToProps = (state) => ({
   user: state.usersStore.user,
+  location: state.usersStore.location
 });
 
-export default connect(mapStateToProps, { logout })(Dashboard);
+export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);
+
+// <div className="header">
+//
+// <Header handleLogout={handleLogout} user={props.user}/>
+//
+// </div>

@@ -1,18 +1,18 @@
 const _userObject = (state) => ({
   user: {
     id: state.id,
-    username: state.username,
-    password: state.password,
-    firstName: state.firstName,
-    lastName: state.lastName,
     email: state.email,
-    bio: state.bio,
-    avatar: state.avatar,
-    longitude: state.longitude,
-    latitude: state.latitude
-    // admin_level: state.adminLevel
-
-
+    password: state.password,
+    first_name: state.first_name,
+    middle_name: state.middle_name,
+    last_name: state.last_name,
+    phone: state.phone,
+    gender: state.gender,
+    birthday: state.birthday,
+    // location: {
+    //   longitude: state.location.longitude,
+    //   latitude: state.location.latitude
+    // }
   },
 
 });
@@ -44,6 +44,71 @@ export const createUser = (state) => {
 
 
 };
+
+const geopositionToObject = geoposition => ({
+  timestamp: geoposition.timestamp,
+  coords: {
+    accuracy: geoposition.coords.accuracy,
+    latitude: geoposition.coords.latitude,
+    longitude: geoposition.coords.longitude
+  }
+})
+
+// const geolocation = () => {
+//    navigator.geolocation.getCurrentPosition((position) => {
+//       const positionObj = geopositionToObject(position)
+//       debugger
+//       console.log(positionObj);
+//       return positionObj
+//   });
+// }
+
+function getCurrentLocation(options) {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, ({code, message}) =>
+      reject(Object.assign(new Error(message), {name: "PositionError", code})),
+      options);
+    });
+};
+
+export const setUserLocation = () =>{
+// debugger
+return async (dispatch) => {
+
+  let options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    }
+
+   const res = await getCurrentLocation(options);
+   // const pos = await res;
+   if (res.message) {
+     throw new Error(res.message /*+ " " + json.message*/);
+   }
+   // debugger
+   dispatch({
+       type: 'FETCH_USER_LOCATION_SUCCESS',
+       payload: res
+   });
+ }
+
+// return async (dispatch) => {
+//    const geolocation = await navigator.geolocation;
+//
+//      geolocation.getCurrentPosition((position) => {
+//        const positionObj =  geopositionToObject(position)
+//        // debugger
+//        console.log(positionObj);
+//        dispatch({
+//            type: 'FETCH_USER_LOCATION_SUCCESS',
+//            payload: positionObj
+//        });
+//    });
+//  }
+}
+
+
 
 export const storeUser = (user) => {
   const configObj = {

@@ -5,10 +5,14 @@ import { login } from "../../actions/AuthActions";
 
 class Signup extends React.Component {
   state = {
-      username:"",
+      email:"",
       password: "",
-      firstName: "",
-      lastName: ""
+      first_name: "",
+      middle_name: "",
+      last_name: "",
+      birthday: "",
+      phone: "",
+      gender: ""
 
 
 
@@ -39,9 +43,9 @@ class Signup extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
-                        name="username"
-                        placeholder="Username"
-                        value={this.state.username}
+                        name="email"
+                        placeholder="Email"
+                        value={this.state.email}
                         onChange={this.handleOnChange}
                     />
                     <br/>
@@ -55,21 +59,45 @@ class Signup extends React.Component {
                     <br/>
                     <input
                         type="text"
-                        name="firstName"
+                        name="first_name"
                         placeholder="First Name"
-                        value={this.state.firstName}
+                        value={this.state.first_name}
                         onChange={this.handleOnChange}
                     />
                     <br/>
                     <input
                         type="text"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={this.state.lastName}
+                        name="middle_name"
+                        placeholder="Middle Name"
+                        value={this.state.middle_name}
                         onChange={this.handleOnChange}
                     />
-
-
+                    <br/>
+                    <input
+                        type="text"
+                        name="last_name"
+                        placeholder="Last Name"
+                        value={this.state.last_name}
+                        onChange={this.handleOnChange}
+                    />
+                    <br/>
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={this.state.phone}
+                        onChange={this.handleOnChange}
+                    />
+                    <br/>
+                    <input type="radio" id="male" name="gender" value="male"/>
+                    <label for="male">Male</label><br/>
+                    <input type="radio" id="female" name="gender" value="female"/>
+                    <label for="female">Female</label><br/>
+                    <input type="radio" id="other" name="gender" value="other"/>
+                    <label for="other">Other</label>
+                    <br/>
+                    <label for="birthday">Birthday:</label>
+                    <input type="date" name="birthday"/>
                     <br/>
                     <input
                         type="submit"

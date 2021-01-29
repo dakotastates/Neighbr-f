@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { storeMessages } from "../actions/MessageActions";
+import Conversations from "../components/message/Conversations";
+
 
 function MessagesContainer(props) {
 
@@ -14,9 +16,11 @@ function MessagesContainer(props) {
   }, []);
 
 const { messages, user } = props;
-debugger
+// debugger
   return (
-    <h1>Messages Container</h1>
+    <div>
+      <Conversations messages={messages} user={user}/>
+    </div>
   )
 
 }

@@ -1,5 +1,5 @@
 export default function UsersReducer(
-  state = { user: {}, users: [], profile:{} },
+  state = { user: {}, users: [], profile:{}, location:{} },
   { type, payload }
 ) {
   switch (type) {
@@ -9,6 +9,13 @@ export default function UsersReducer(
     return {
       ...state,
       user: payload,
+    };
+
+    case "FETCH_USER_LOCATION_SUCCESS":
+    // debugger
+    return {
+      ...state,
+      location: payload
     };
 
     case "CREATE_USER":

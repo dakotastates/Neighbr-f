@@ -3,8 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Authenticate from "./components/auth/Authenticate";
 import Dashboard from "./components/dashboard/Dashboard";
 import { connect } from "react-redux";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-//import 'semantic-ui-css/semantic.min.css'
+
 
 function App(props) {
   // debugger
