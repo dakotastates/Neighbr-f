@@ -7,7 +7,7 @@ import { login } from "../../actions/AuthActions";
 
 class Login extends React.Component {
   state = {
-    username: "",
+    email: "",
     password: "",
   };
 
@@ -38,8 +38,8 @@ class Login extends React.Component {
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
-                        name="username"
-                        placeholder="Username"
+                        name="email"
+                        placeholder="Email"
                         value={this.state.email}
                         onChange={this.handleOnChange}
                     />

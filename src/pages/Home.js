@@ -1,29 +1,48 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { connect } from "react-redux";
+import { updateUser } from "../actions/UserActions";
 // import { connect } from "react-redux";
 // import CommunityBoardContainer from "../containers/CommunityBoardContainer";
 // import ClosestNeighborsContainer from "../containers/ClosestNeighborsContainer";
 // import SortBoardContainer from "../containers/SortBoardContainer";
+import MapContainer from "../containers/MapContainer";
+
 // import Grid from "@material-ui/core/Grid";
 
 
 
 function Home(props) {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+// debugger
+useEffect(() => {
+  // debugger
+  props
+  .updateUser(props.location, props.user.id)
+  // debugger
+  .then(() => {
+    setLoading(true);
 
-
-
+  })
+  .catch((error) => {
+    setError(error);
+  });
+}, []);
+// debugger
         return(
             <div>
-            <h1>Home Page</h1>
+            <MapContainer location={props.location} />
             </div>
         )
 
 }
 
-// const mapStateToProps = (state) => ({
-//   user: state.usersStore.user,
-// });
+const mapStateToProps = (state) => ({
+  user: state.usersStore.user,
+  location: state.usersStore.location,
+});
 
-export default Home;
+export default connect(mapStateToProps, {updateUser})(Home);
 
 
 // <Grid container justify="space-between" spacing={0}>

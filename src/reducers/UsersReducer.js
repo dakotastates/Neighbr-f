@@ -1,5 +1,5 @@
 export default function UsersReducer(
-  state = { user: {}, users: [], profile:{}, location:{} },
+  state = { user: {}, users: [], profile: {}, location: {} },
   { type, payload }
 ) {
   switch (type) {
@@ -47,7 +47,7 @@ export default function UsersReducer(
         ...state,
         profile: payload
       };
-
+      // debugger
 
     default:
       return state;

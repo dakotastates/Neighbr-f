@@ -14,12 +14,10 @@ import Messages from "../../pages/Messages";
 import Header from "../../components/dashboard/Header";
 import Footer from "../../components/dashboard/Footer";
 
-// import AdminDashboard from "../components/admin/AdminDashboard";
-// import AdvisorDashboard from "../pages/Advisors";
-
 
 function Dashboard(props) {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const handleLogout = () => {
       props.logout();
@@ -38,29 +36,31 @@ function Dashboard(props) {
 
       })
       .catch((error) => {
-        alert(error);
+        setError(error);
       });
     }, []);
-
+    // debugger 
     if (loading === false){
           return(
             <div>Fetching Location</div>
           )
-        } else {
-        return (
-              <div>
+        } else if (error){
+          return(
+            <div>Unable to Load Location</div>
+          )
+         } else {
+          return (
+            <div>
+              <Switch>
+                <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
+                <PrivateRoute path="/profile/:id" component={Profile}/>
+                <PrivateRoute path="/about" component={About} />
+                <PrivateRoute path="/map" component={Map} />
+                <PrivateRoute path="/messages" component={Messages} />
 
-                <Switch>
-                  <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
-                  <PrivateRoute path="/profile/:id" component={Profile}/>
-                  <PrivateRoute path="/about" component={About} />
-                  <PrivateRoute path="/map" component={Map} />
-                  <PrivateRoute path="/messages" component={Messages} />
-                  <PrivateRoute path="/logout" component={Home} />
-                  <PrivateRoute path="/" component={Home} />
-
-                </Switch>
-                <Footer />
+                <PrivateRoute path="/" component={Home} />
+              </Switch>
+              <Footer />
               </div>
         );
       }
@@ -69,7 +69,7 @@ function Dashboard(props) {
 
 const mapStateToProps = (state) => ({
   user: state.usersStore.user,
-  location: state.usersStore.location
+  // location: state.usersStore.location
 });
 
 export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);

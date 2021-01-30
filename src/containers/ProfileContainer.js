@@ -8,7 +8,7 @@ function ProfileContainer(props) {
 
   useEffect(() => {
     props
-    .showUser(props.match.params.id);
+    .showUser(props.match.params.id)
     // .catch((error) => {
     //   alert(error);
     // });

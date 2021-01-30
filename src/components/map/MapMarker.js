@@ -5,17 +5,10 @@ import { Marker } from 'google-maps-react';
 
 function MapMarker(props) {
 
-// const [longitude, setLongitude] = useState();
-// const [latitude, setLatitude] = useState();
 
-
-
-    const {user} = props
-    return (
-
-      <Marker position={{ lat: {user.latitude}, lng: {user.longitude}}} />
-
-    )
+    const {user, key} = props
+    
+    return (<Marker position={{ lat: user.location.latitude, lng: user.location.longitude }} />)
   }
 
 

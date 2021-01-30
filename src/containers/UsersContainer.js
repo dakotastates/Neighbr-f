@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import GoogleMap from "../components/map/GoogleMap";
-import { GoogleApiWrapper} from 'google-maps-react';
-import { connect } from "react-redux";
+import Profile from "../components/profile/Profile";
+import { connect } from 'react-redux'
 import { storeUsers } from "../actions/UserActions";
+import MapMarker from '../components/map/MapMarker'
 
-const GOOGLE_MAP_KEY = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
 
-function MapContainer(props) {
+function UsersContainer(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
@@ -22,6 +21,9 @@ function MapContainer(props) {
     });
 
   }, []);
+
+
+
   if (loading === false){
         return(
           <div>Loading Users</div>
@@ -32,21 +34,30 @@ function MapContainer(props) {
         )
        } else {
 
+         const { users } = props
+
+         const userList = users.map(user => {
            return (
-
-               <GoogleMap google={props.google} location={props.location} users={props.users}/>
-
+             <MapMarker
+                 key={user.id}
+                 user={user}
+             />
            )
-         };
+         });
 
-
+        return (
+          <div>
+            {userList}
+            </div>
+      );
+    }
 
 }
 
 const mapStateToProps = (state) => ({
-  users: state.usersStore.users
+
+  users: state.usersStore.users,
+
 });
 
-export default connect(mapStateToProps, { storeUsers})(GoogleApiWrapper({
-  apiKey: GOOGLE_MAP_KEY
-})(MapContainer))
+export default connect(mapStateToProps, {storeUsers})(UsersContainer)

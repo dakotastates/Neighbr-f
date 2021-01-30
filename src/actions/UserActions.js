@@ -9,10 +9,10 @@ const _userObject = (state) => ({
     phone: state.phone,
     gender: state.gender,
     birthday: state.birthday,
-    // location: {
-    //   longitude: state.location.longitude,
-    //   latitude: state.location.latitude
-    // }
+    location_attributes: {
+      longitude: state.longitude,
+      latitude: state.latitude
+    }
   },
 
 });
@@ -45,14 +45,14 @@ export const createUser = (state) => {
 
 };
 
-const geopositionToObject = geoposition => ({
-  timestamp: geoposition.timestamp,
-  coords: {
-    accuracy: geoposition.coords.accuracy,
-    latitude: geoposition.coords.latitude,
-    longitude: geoposition.coords.longitude
-  }
-})
+// const geopositionToObject = geoposition => ({
+//   timestamp: geoposition.timestamp,
+//   coords: {
+//     accuracy: geoposition.coords.accuracy,
+//     latitude: geoposition.coords.latitude,
+//     longitude: geoposition.coords.longitude
+//   }
+// })
 
 // const geolocation = () => {
 //    navigator.geolocation.getCurrentPosition((position) => {
@@ -89,7 +89,7 @@ return async (dispatch) => {
    // debugger
    dispatch({
        type: 'FETCH_USER_LOCATION_SUCCESS',
-       payload: res
+       payload: res.coords
    });
  }
 
@@ -148,7 +148,7 @@ export const storeUsers = () => {
     const json = await res.json();
     // debugger
     if (json.error) {
-      // debugger
+      debugger
       throw new Error(json.error + " " + json.message);
     }
     dispatch({
@@ -159,7 +159,7 @@ export const storeUsers = () => {
 };
 
 export const updateUser = (state, id) => {
-  debugger
+  // debugger
   // console.log(state)
   let options = {
     method: "PATCH",
