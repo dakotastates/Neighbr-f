@@ -4,11 +4,11 @@ import React from 'react'
 function Message(props) {
 
 
-const { message, user } = props;
+const { message } = props;
 
         return(
             <div>
-              <h1>{message.message}</h1>
+              {message.body}
             </div>
         )
 

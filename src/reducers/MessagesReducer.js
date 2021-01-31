@@ -1,22 +1,30 @@
 export default function MessagesReducer(
-  state = { message: {}, messages: [] },
+  state = { message: {}, messages: [], conversation:{}, conversations:[] },
   { type, payload }
 ) {
   switch (type) {
 
-    // case "STORAGE_BOARD_MESSAGE":
-    // // debugger
-    // return {
-    //   ...state,
-    //   message: payload,
-    // };
+
+    case "CREATE_CONVERSATION":
+
+      return {
+        ...state,
+        conversation: payload,
+
+      };
+
+      case "STORAGE_CONVERSATIONS":
+      // debugger
+      return {
+        ...state,
+        conversations: payload,
+      };
 
     case "CREATE_MESSAGE":
     // debugger
       return {
         ...state,
-        message: payload,
-        messages: [...state.messages, payload]
+        messages: [...state.messages, payload],
       };
 
       case "STORAGE_MESSAGES":

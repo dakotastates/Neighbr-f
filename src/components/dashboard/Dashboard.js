@@ -39,7 +39,7 @@ function Dashboard(props) {
         setError(error);
       });
     }, []);
-    // debugger 
+    // debugger
     if (loading === false){
           return(
             <div>Fetching Location</div>
@@ -52,11 +52,7 @@ function Dashboard(props) {
           return (
             <div>
               <Switch>
-                <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
-                <PrivateRoute path="/profile/:id" component={Profile}/>
-                <PrivateRoute path="/about" component={About} />
-                <PrivateRoute path="/map" component={Map} />
-                <PrivateRoute path="/messages" component={Messages} />
+
 
                 <PrivateRoute path="/" component={Home} />
               </Switch>
@@ -79,3 +75,9 @@ export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);
 // <Header handleLogout={handleLogout} user={props.user}/>
 //
 // </div>
+
+// <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
+// <PrivateRoute path="/profile/:id" component={Profile}/>
+// <PrivateRoute path="/about" component={About} />
+// <PrivateRoute path="/map" component={Map} />
+// <PrivateRoute path="/messages" component={Messages} />

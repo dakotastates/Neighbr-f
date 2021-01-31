@@ -3,13 +3,14 @@ import UsersReducer from "./UsersReducer";
 import AuthReducer from "./AuthReducer";
 import ModalReducer from "./ModalReducer";
 // import BoardMessagesReducer from "./BoardMessagesReducer";
-// import MessagesReducer from "./MessagesReducer";
+import MessagesReducer from "./MessagesReducer";
 
 
 const rootReducer = combineReducers({
   usersStore: UsersReducer,
   auth: AuthReducer,
   modalStore: ModalReducer,
+  messagesStore: MessagesReducer
 
 
 });
