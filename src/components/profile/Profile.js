@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
+import CurrentUserProfile from './CurrentUserProfile';
+import ProfileCard from './ProfileCard';
 
 
 
 function Profile(props) {
-  // const [toggleChat, setToggleChat] = useState(false);
-  // const { first_name } = props.user;
-  // debugger
+  const { id, first_name, profile } = props.user.user;
 
-  return(
-    <div>
-    <h1>Profile for </h1>
-    <button onClick={()=>props.toggle(true)}>Chat</button>
-    </div>
 
-  )
+    if (props.currentUser.id === id){
+        return(<CurrentUserProfile {...props} />)
+      } else{
+        return(<ProfileCard {...props} toogle={props.toggle}/>)
+      }
 }
 
 export default Profile;

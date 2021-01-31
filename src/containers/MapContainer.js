@@ -35,7 +35,7 @@ function MapContainer(props) {
 
            return (
 
-               <GoogleMap google={props.google} location={props.location} users={props.users} openModal={openProfileModal}/>
+               <GoogleMap currentUser={props.currentUser} google={props.google} location={props.location} users={props.users} openModal={openProfileModal}/>
 
            )
          };

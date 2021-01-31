@@ -31,7 +31,7 @@ useEffect(() => {
 // debugger
         return(
             <div>
-            <MapContainer location={props.location} />
+            <MapContainer currentUser={props.user} location={props.location} />
             </div>
         )
 

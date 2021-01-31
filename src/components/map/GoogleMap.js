@@ -52,7 +52,7 @@ function GoogleMap(props) {
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-    <ChatProfileContainer />
+    <ChatProfileContainer currentUser={props.currentUser} user={selectedUser}/>
 
     </div>
   );
