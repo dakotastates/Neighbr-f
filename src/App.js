@@ -9,7 +9,7 @@ function App(props) {
   // debugger
   return (
     <Router>
-      <div className="App">
+      <div class="container-fluid h-100">
         {props.auth ? (
           <Route
             render={(routeProps) => <Dashboard {...props} {...routeProps} />}

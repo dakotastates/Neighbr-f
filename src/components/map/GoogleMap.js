@@ -51,7 +51,8 @@ function GoogleMap(props) {
   // const [selectedUser, setSelectedUser] = useState({});
 
   const body = (
-    <div style={modalStyle} className={classes.paper}>
+    <div class="col-md-8 col-xl-6 chat">
+
     <ChatProfileContainer currentUser={props.currentUser} user={selectedUser}/>
 
     </div>
@@ -125,6 +126,6 @@ export default GoogleMap
 //   visible = { showingInfoWindow }>
 //   <ChatProfileContainer {...selectedUser}/>
 // </InfoWindow>
-
-
+// <div class="col-md-8 col-xl-6 chat">
+// <div style={modalStyle} className={classes.paper}>
   // <Marker position={{ lat: props.location.latitude, lng: props.location.longitude }} />

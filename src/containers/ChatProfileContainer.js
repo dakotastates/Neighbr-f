@@ -6,8 +6,8 @@ function ChatProfileContainer(props) {
   const [toggle, setToggle] = useState(false);
 
   return(
-      <div>
-      <h2 id="simple-modal-title">Profile for: {props.user.user.first_name}</h2>
+      <div >
+
       <p id="simple-modal-description">
       {toggle ? (
         <Chat {...props} toggle={setToggle} />

@@ -27,19 +27,34 @@ function MessageInput(props) {
       .catch((error) => {
         alert(error);
       });
-    
+    setState({
+      body: ""
+    })
   };
 
 
     return(
       <form onSubmit={onSubmit}>
-        <textarea
-          onChange={handleOnChange}
-          name="body"
-          placeholder="send a message"
-          value={state.body}
-        />
-        <input type="submit" value="send"/>
+      <div class="card-footer">
+        <div class="input-group">
+
+            <div class="input-group-append">
+              <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+            </div>
+
+            <textarea
+              class="form-control type_msg"
+              onChange={handleOnChange}
+              name="body"
+              placeholder="send a message"
+              value={state.body}
+              />
+              <div class="input-group-append">
+                <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+              </div>
+
+        </div>
+      </div>
       </form>
     )
 
@@ -47,3 +62,5 @@ function MessageInput(props) {
 
 
 export default MessageInput;
+
+// <input type="submit" value="send"/>

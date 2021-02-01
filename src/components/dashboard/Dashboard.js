@@ -50,7 +50,7 @@ function Dashboard(props) {
           )
          } else {
           return (
-            <div>
+            <div class="row justify-content-center h-100">
               <Switch>
 
 

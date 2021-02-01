@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Messages from "./Messages";
 import MessageInput from "./MessageInput"
+import ConversationHeader from "./ConversationHeader"
 import { connect } from 'react-redux'
 import { createMessage, storeMessages } from "../../actions/MessageActions";
 
@@ -33,9 +34,10 @@ if (loading === false){
       )
      } else {
         return(
-          <div>
-          <Messages conversation={props.conversation} messages={props.messages}/>
-          <MessageInput currentUser={props.currentUser} conversation={props.conversation} createMessage={props.createMessage}/>
+          <div class="card">
+            <ConversationHeader selectedUser={props.selected_user}/>
+            <Messages currentUser={props.currentUser} conversation={props.conversation} messages={props.messages}/>
+            <MessageInput currentUser={props.currentUser} conversation={props.conversation} createMessage={props.createMessage}/>
           </div>
         )
       }

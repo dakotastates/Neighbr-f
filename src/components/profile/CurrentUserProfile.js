@@ -11,9 +11,11 @@ function CurrentUserProfile(props) {
 
 
   return(
-    <div>
-    <h2>{profile.bio}</h2>
-    <button>Edit Profile</button>
+    <div class="card-body msg_card_body">
+      <div class="card">
+        <h2>{profile.bio}</h2>
+        <button>Edit Profile</button>
+      </div>
     </div>
   )
 }

@@ -4,12 +4,12 @@ import Message from "./Message";
 
 function Messages(props) {
 
-  const { messages } = props;
+  const { messages, currentUser } = props;
 
   const messageList = messages.map(message => {
     return (
       <ul>
-        <Message key={message.id} message={message}/>
+        <Message key={message.id} message={message} currentUser={currentUser}/>
       </ul>
     )
   });
@@ -17,8 +17,8 @@ function Messages(props) {
   if(messages != ""){
 
     return (
-      <div>
-        message list
+      <div class="card-body msg_card_body">
+
         {messageList}
       </div>
     );
