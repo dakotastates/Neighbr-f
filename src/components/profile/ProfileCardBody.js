@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 
 function ProfileCardBody(props) {
-  const { id, first_name, profile } = props.user.user;
+  const { id, first_name, profile } = props.selectedUser.user
 // debugger
   return(
     <div class="card-body msg_card_body">

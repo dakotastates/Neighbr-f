@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Profile from '../components/profile/Profile'
+// import Profile from '../components/profile/Profile'
+import ProfileCard from '../components/profile/ProfileCard'
 import Chat from '../components/message/Chat'
 
 function ChatProfileContainer(props) {
@@ -8,13 +9,13 @@ function ChatProfileContainer(props) {
   return(
       <div >
 
-      <p id="simple-modal-description">
+
       {toggle ? (
         <Chat {...props} toggle={setToggle} />
       ) : (
-        <Profile {...props} toggle={setToggle} />
+        <ProfileCard {...props} toggle={setToggle} />
       )}
-      </p>
+
 
       </div>
   )

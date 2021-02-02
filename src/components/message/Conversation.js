@@ -35,7 +35,7 @@ if (loading === false){
      } else {
         return(
           <div class="card">
-            <ConversationHeader selectedUser={props.selected_user}/>
+            <ConversationHeader toggle={props.toggle} selectedUser={props.selected_user}/>
             <Messages currentUser={props.currentUser} conversation={props.conversation} messages={props.messages}/>
             <MessageInput currentUser={props.currentUser} conversation={props.conversation} createMessage={props.createMessage}/>
           </div>

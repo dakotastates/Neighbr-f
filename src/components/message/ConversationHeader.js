@@ -9,15 +9,15 @@ function ConversationHeader(props) {
     <div class="card-header msg_head">
       <div class="d-flex bd-highlight">
         <div class="img_cont">
-        <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" className="rounded-circle user_img"/>
-        <span class="online_icon"></span>
+          <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" className="rounded-circle user_img" onClick={()=>props.toggle(false)}/>
+          <span class="online_icon"></span>
         </div>
         <div class="user_info">
-        <span>{props.selectedUser.user.first_name}</span>
+          <span>{props.selectedUser.user.first_name}</span>
         </div>
         <div class="video_cam">
-        <span><i class="fas fa-video"></i></span>
-        <span><i class="fas fa-phone"></i></span>
+          <span><i class="fas fa-video"></i></span>
+          <span><i class="fas fa-phone"></i></span>
         </div>
       </div>
       <span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>

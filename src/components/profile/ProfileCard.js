@@ -9,25 +9,27 @@ import ProfileCardBody from './ProfileCardBody'
 
 function ProfileCard(props) {
 
-  const handleToggle = () =>{
-    props.toggle(true)
-  }
+  // const handleToggle = () =>{
+  //   props.toggle(true)
+  // }
 
 
 
-  const { id, first_name, profile } = props.user.user;
+  // const { id, first_name, profile } = props.user.user;
 
   return(
     <div class="card">
-      <ProfileHeader selectedUser={props.user} />
-      <ProfileCardBody {...props} />
-      <ProfileCardFooter />
-      <button onClick={handleToggle}>Chat</button>
+      <ProfileHeader currentUser={props.currentUser} selectedUser={props.user} />
+      <ProfileCardBody currentUser={props.currentUser}  selectedUser={props.user} />
+      <ProfileCardFooter selectedUser={props.user} currentUser={props.currentUser} toggle={props.toggle}/>
+
 
     </div>
   )
 }
 
 export default ProfileCard;
+
+// <button onClick={handleToggle}>Chat</button>
 
 // <button onClick={()=>props.toggle(true)}>Chat</button>

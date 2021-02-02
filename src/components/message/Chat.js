@@ -37,9 +37,9 @@ function Chat(props) {
        } else {
         return(
             <div>
-            
-                <Conversation selected_user={props.user} currentUser={props.currentUser} conversation={props.conversation}/>
-                <button onClick={()=>props.toggle(false)}>Back to Profile</button>
+
+                <Conversation toggle={props.toggle} selected_user={props.user} currentUser={props.currentUser} conversation={props.conversation}/>
+
 
             </div>
         )
@@ -57,4 +57,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {createConversation})(Chat);
 
+// <button onClick={()=>props.toggle(false)}>Back to Profile</button>
 // <div class="card">
