@@ -50,7 +50,7 @@ function Dashboard(props) {
           )
          } else {
           return (
-            <div class="row justify-content-center h-100">
+            <div >
               <Switch>
 
 
@@ -70,6 +70,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);
 
+
+// class="row justify-content-center h-100"
 // <div className="header">
 //
 // <Header handleLogout={handleLogout} user={props.user}/>

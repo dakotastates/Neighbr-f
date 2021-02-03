@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ProfileCard from '../components/profile/ProfileCard'
 import Chat from '../components/message/Chat'
 import { connect } from 'react-redux'
-import { getProfile, updateProfile } from "../actions/ProfileActions";
+import { getProfile, updateProfile, updateProfileImage } from "../actions/ProfileActions";
 import { updateUser } from "../actions/UserActions";
 
 function ChatProfileContainer(props) {
@@ -56,4 +56,4 @@ const mapStateToProps = (state) => ({
 
 });
 
-export default connect(mapStateToProps, {getProfile, updateProfile, updateUser})(ChatProfileContainer);
+export default connect(mapStateToProps, {getProfile, updateProfile, updateUser, updateProfileImage})(ChatProfileContainer);

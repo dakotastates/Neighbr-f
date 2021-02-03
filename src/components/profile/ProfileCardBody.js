@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import EditProfile from './EditProfile'
 import EditUser from './EditUser'
+import EditProfileImage from './EditProfileImage'
 
 
 function ProfileCardBody(props) {
@@ -37,7 +38,8 @@ function ProfileCardBody(props) {
     {toggleForm.headline ? <div> <EditProfile data={"headline"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Headline: {headline.headline}  {toggleEdit ? <button name="headline" onClick={handleEdit}>Edit Headline</button> : null}<br/> </div>}
     Neighborships: {neighborships.length}
     <hr/>
-
+    {toggleEdit ?  <EditProfileImage updateProfileImage={props.updateProfileImage} profile={props.profile} toggle={setToggleForm}/>: <div>Profile Image</div>}
+    <hr/>
     {toggleForm.bio ? <div> <EditProfile data={"bio"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Bio: {bio}  {toggleEdit ? <button name="bio" onClick={handleEdit}>Edit Bio</button> : null}<br/> </div>}
     {toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}
     {toggleForm.occupations ? <div> <EditProfile data={"occupations"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/></div> :  <div> Occupation: {occupations.last}  {toggleEdit ? <button name="occupations" onClick={handleEdit}>Edit Occupation</button> : null}<br/> </div>}

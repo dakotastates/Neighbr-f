@@ -20,7 +20,7 @@ function ProfileCard(props) {
   return(
     <div class="card">
       <ProfileHeader currentUser={props.currentUser} selectedUser={props.user} />
-      <ProfileCardBody updateUser={props.updateUser} updateProfile={props.updateProfile} profile={props.profile} currentUser={props.currentUser}  selectedUser={props.user} />
+      <ProfileCardBody updateProfileImage={props.updateProfileImage} updateUser={props.updateUser} updateProfile={props.updateProfile} profile={props.profile} currentUser={props.currentUser}  selectedUser={props.user} />
       <ProfileCardFooter selectedUser={props.user} currentUser={props.currentUser} toggle={props.toggle}/>
     </div>
   )
