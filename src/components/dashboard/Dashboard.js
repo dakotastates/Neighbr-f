@@ -51,9 +51,8 @@ function Dashboard(props) {
          } else {
           return (
             <div >
+              <Header handleLogout={handleLogout} />
               <Switch>
-
-
                 <PrivateRoute path="/" component={Home} />
               </Switch>
               <Footer />
