@@ -43,7 +43,7 @@ export const createConversation = (state) => {
    }
 };
 
-export const storeConversations = (id) => {
+export const storeConversations = () => {
   const options = {
     method: "GET",
     headers: {
@@ -54,7 +54,7 @@ export const storeConversations = (id) => {
 
     const res = await fetch("http://localhost:3000/api/v1/conversations", options);
     const json = await res.json();
-    debugger
+    // debugger
     if (json.error) {
       // debugger
       throw new Error(json.error + " " + json.message);

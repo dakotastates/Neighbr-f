@@ -65,7 +65,15 @@ function GoogleMap(props) {
   //   setShowingInfoWindow(true)
   //
   // };
+
+
     const userMarkers = props.users.map((user, index) => {
+      let image_url;
+      if (user.profile.featured_image) {
+        image_url = user.profile.featured_image.url
+      } else{
+        image_url = "https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png"
+      }
 
       return(<Marker
         key={index}
@@ -75,24 +83,46 @@ function GoogleMap(props) {
           lng: user.location.longitude
         }}
         icon={{
-          url: "https://png.pngtree.com/element_our/png/20181227/marker-glyph-black-icon-png_293085.jpg",
+          url: image_url,
           anchor: new props.google.maps.Point(32,32),
           scaledSize: new props.google.maps.Size(64,64)
+
         }}
         user={user}
         onClick={handleOpen}
         />)
     });
 
+    // const style = {
+    //   width: '100vh',
+    //   height: '100vh'
+    // }
 
 
   // }
 
+  const containerStyle = {
+    position: 'absolute',
+    // height: '90vh',
+    // display: "flex",
+    margin: " auto",
+    width: "100%",
+
+    height:"90vh",
+
+
+     // "min-height": "100%",
+     // "flex-direction": "column"
+    // width: '50vw',
+    // height: '50vh'
+  }
+
 
     return (
-
+      <div >
       <Map
         google={props.google}
+        containerStyle={containerStyle}
         zoom={14}
         initialCenter={
           {
@@ -113,7 +143,7 @@ function GoogleMap(props) {
 
         </Map>
 
-
+        </div>
 
     );
 

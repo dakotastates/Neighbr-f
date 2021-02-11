@@ -18,8 +18,8 @@ function ProfileCard(props) {
   // const { id, first_name, profile } = props.user.user;
 
   return(
-    <div class="card">
-      <ProfileHeader currentUser={props.currentUser} selectedUser={props.user} />
+    <div class="card" >
+      <ProfileHeader profile={props.profile} currentUser={props.currentUser} selectedUser={props.user} />
       <ProfileCardBody updateProfileImage={props.updateProfileImage} updateUser={props.updateUser} updateProfile={props.updateProfile} profile={props.profile} currentUser={props.currentUser}  selectedUser={props.user} />
       <ProfileCardFooter selectedUser={props.user} currentUser={props.currentUser} toggle={props.toggle}/>
     </div>

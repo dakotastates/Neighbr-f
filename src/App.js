@@ -8,8 +8,9 @@ import { connect } from "react-redux";
 function App(props) {
   // debugger
   return (
+    <div >
     <Router>
-      <div class="container-fluid h-100">
+
         {props.auth ? (
           <Route
             render={(routeProps) => <Dashboard {...props} {...routeProps} />}
@@ -17,8 +18,9 @@ function App(props) {
         ) : (
           <Authenticate {...props} />
         )}
-      </div>
+
     </Router>
+    </div>
   );
 }
 

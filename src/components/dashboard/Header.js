@@ -2,6 +2,7 @@ import React from 'react'
 // import SearchContainer from "../../containers/SearchContainer";
 // import Account from "./Account";
 import Navbar from "./Navbar";
+import ProfilesDrawer from './ProfilesDrawer';
 // import Grid from "@material-ui/core/Grid";
 
 function Header(props) {
@@ -11,8 +12,6 @@ function Header(props) {
     <div>
 
     <Navbar handleLogout={handleLogout} user={props.user}/>
-
-    <hr />
     </div>
   )
 

@@ -6,7 +6,7 @@ import { updateUser } from "../actions/UserActions";
 // import ClosestNeighborsContainer from "../containers/ClosestNeighborsContainer";
 // import SortBoardContainer from "../containers/SortBoardContainer";
 import MapContainer from "../containers/MapContainer";
-
+// import ProfilesDrawer from '../components/dashboard/Profiles'
 // import Grid from "@material-ui/core/Grid";
 
 

@@ -83,6 +83,7 @@ return async (dispatch) => {
 
    const res = await getCurrentLocation(options);
    // const pos = await res;
+   // debugger
    if (res.message) {
      throw new Error(res.message /*+ " " + json.message*/);
    }
@@ -197,7 +198,7 @@ export const showUser = (id) => {
   };
   return async (dispatch) => {
 // eslint-disable-next-line
-    const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}`, options);
+    const res = await fetch("http://localhost:3000/api/v1/users" + `/${id}/profiles`, options);
     const json = await res.json();
     // debugger
     if (json.error) {

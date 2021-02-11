@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
-import Profile from "../components/profile/Profile";
+import FullProfile from "../components/profile/FullProfile";
 import { connect } from 'react-redux'
 import { showUser } from "../actions/UserActions";
+
 
 
 function ProfileContainer(props) {
@@ -9,17 +10,17 @@ function ProfileContainer(props) {
   useEffect(() => {
     props
     .showUser(props.match.params.id)
-    // .catch((error) => {
-    //   alert(error);
-    // });
+    .catch((error) => {
+      alert(error);
+    });
   }, []);
 
 const { profile } = props
-
+  // debugger
   return (
     <div>
 
-    {props.profile.username ? <Profile />:<h1>Profile not Found</h1>}
+    {props.profile ? <FullProfile />:<h1>Profile not Found</h1>}
 
 
     </div>

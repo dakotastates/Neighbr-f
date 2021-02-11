@@ -13,6 +13,10 @@ import Map from "../../pages/Map";
 import Messages from "../../pages/Messages";
 import Header from "../../components/dashboard/Header";
 import Footer from "../../components/dashboard/Footer";
+import Content from './Content'
+// import Route from './Route'
+import ProfilesDrawer from './ProfilesDrawer'
+
 
 
 function Dashboard(props) {
@@ -52,11 +56,9 @@ function Dashboard(props) {
           return (
             <div >
               <Header handleLogout={handleLogout} />
-              <Switch>
-                <PrivateRoute path="/" component={Home} />
-              </Switch>
-              <Footer />
-              </div>
+              <ProfilesDrawer />
+
+            </div>
         );
       }
 
@@ -68,6 +70,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);
+
+// <Header handleLogout={handleLogout} />
+
+
 
 
 // class="row justify-content-center h-100"

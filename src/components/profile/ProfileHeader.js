@@ -27,7 +27,7 @@ const currentUserHeader = () => {
     <div class="card-header msg_head">
       <div class="d-flex bd-highlight">
         <div class="img_cont">
-          <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" className="rounded-circle user_img"/>
+          {props.profile.featured_image ? <img src={props.profile.featured_image.url} alt={props.profile.first_name} className="rounded-circle user_img"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.profile.first_name} className="rounded-circle user_img"/>}
           <span class="online_icon"></span>
         </div>
         <div class="user_info">

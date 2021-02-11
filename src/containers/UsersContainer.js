@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Profile from "../components/profile/Profile";
 import { connect } from 'react-redux'
 import { storeUsers } from "../actions/UserActions";
-import MapMarker from '../components/map/MapMarker'
+import ProfileListCard from '../components/profile/ProfileListCard'
+
 
 
 function UsersContainer(props) {
@@ -38,10 +39,7 @@ function UsersContainer(props) {
 
          const userList = users.map(user => {
            return (
-             <MapMarker
-                 key={user.id}
-                 user={user}
-             />
+              <ProfileListCard user={user} />
            )
          });
 

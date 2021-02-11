@@ -34,9 +34,9 @@ function MapContainer(props) {
        } else {
 
            return (
-
+                <div >
                <GoogleMap currentUser={props.currentUser} google={props.google} location={props.location} users={props.users} openModal={openProfileModal}/>
-
+               </div>
            )
          };
 

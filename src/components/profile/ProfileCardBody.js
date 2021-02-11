@@ -30,15 +30,16 @@ function ProfileCardBody(props) {
     setToggleForm(toggleForm => ({ ...toggleForm, [name]: true }));
   }
 
+  // debugger
 
   return(
     <div class="card-body msg_card_body">
     {toggleForm.name ? <div> <EditUser data={"name"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> {first_name} {middle_name} {last_name}  {toggleEdit ? <button name="name" onClick={handleEdit}>Edit Name</button> : null}<br/> </div>}
-    {first_name} {middle_name} {last_name}<br/>
+
     {toggleForm.headline ? <div> <EditProfile data={"headline"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Headline: {headline.headline}  {toggleEdit ? <button name="headline" onClick={handleEdit}>Edit Headline</button> : null}<br/> </div>}
     Neighborships: {neighborships.length}
     <hr/>
-    {toggleEdit ?  <EditProfileImage updateProfileImage={props.updateProfileImage} profile={props.profile} toggle={setToggleForm}/>: <div>Profile Image</div>}
+    {props.profile.featured_image ? <img src={props.profile.featured_image.url} alt={props.profile.first_name} className="rounded-circle medium_user_img"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.profile.first_name} className="rounded-circle medium_user_img"/>}{toggleEdit ?  <EditProfileImage updateProfileImage={props.updateProfileImage} profile={props.profile} toggle={setToggleForm}/>: <div>Profile Image</div>}
     <hr/>
     {toggleForm.bio ? <div> <EditProfile data={"bio"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Bio: {bio}  {toggleEdit ? <button name="bio" onClick={handleEdit}>Edit Bio</button> : null}<br/> </div>}
     {toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}
