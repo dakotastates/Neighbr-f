@@ -6,10 +6,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 // import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-// import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';
 // import Divider from '@material-ui/core/Divider';
-// import IconButton from '@material-ui/core/IconButton';
-// import MenuIcon from '@material-ui/icons/Menu';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 // import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 // import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 // import ListItem from '@material-ui/core/ListItem';
@@ -17,7 +17,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 // import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 // import MailIcon from '@material-ui/icons/Mail';
-// import LeftDrawer from './LeftDrawer'
+import UsersDrawer from './UsersDrawer'
 // import RightDrawer from './RightDrawer'
 // import ForumIcon from '@material-ui/icons/Forum';
 // import ForumOutlinedIcon from '@material-ui/icons/ForumOutlined';
@@ -168,16 +168,30 @@ export default function AppBarHeader() {
   // debugger
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [openUsersDrawer, setOpenUsersDrawer] = React.useState(false);
+
+  const handleUsersDrawerOpen = () => {
+    setOpenUsersDrawer(true);
+  };
+
+  const handleUsersDrawerClose = () => {
+    setOpenUsersDrawer(false);
+  };
 
   return (
     <div className={classes.root}>
     <CssBaseline />
-    <AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: open,})} >
+    <AppBar position="fixed" className={clsx(classes.appBar, {[classes.appBarShift]: openUsersDrawer,})} >
       <Toolbar>
+        <IconButton color="inherit" aria-label="open drawer" onClick={handleUsersDrawerOpen} edge="start" className={clsx(classes.menuButton, {[classes.hide]: openUsersDrawer,})}>
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" noWrap>The NeighborHood</Typography>
 
       </Toolbar>
     </AppBar>
+    <UsersDrawer handleDrawerOpen={handleUsersDrawerOpen} handleDrawerClose={handleUsersDrawerClose} open={openUsersDrawer}/>
+
     </div>
   );
 }
