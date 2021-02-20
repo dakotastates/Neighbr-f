@@ -5,24 +5,25 @@ import { setUserLocation } from "../../actions/UserActions";
 import { Switch} from "react-router-dom";
 import PrivateRoute from "../../helpers/PrivateRoute";
 // import Navbar from "./Navbar";
-import Home from "../../pages/Home";
-import About from "../../pages/About";
-import Profile from "../../pages/Profile";
-import AboutUser from "../../pages/AboutUser";
-import Map from "../../pages/Map";
-import Messages from "../../pages/Messages";
-import Header from "../../components/dashboard/Header";
-import Footer from "../../components/dashboard/Footer";
-import Content from './Content'
+// import Home from "../../pages/Home";
+// import About from "../../pages/About";
+// import Profile from "../../pages/Profile";
+// import AboutUser from "../../pages/AboutUser";
+// import Map from "../../pages/Map";
+// import Messages from "../../pages/Messages";
+// import Header from "../../components/dashboard/Header";
+// import Footer from "../../components/dashboard/Footer";
+// import Content from './Content'
 // import Route from './Route'
-import ProfilesDrawer from './ProfilesDrawer'
+// import ProfilesDrawer from './ProfilesDrawer'
+import AppBarHeader from './AppBar'
 
 
 
 function Dashboard(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-
+// debugger
   const handleLogout = () => {
       props.logout();
       localStorage.removeItem("state");
@@ -34,7 +35,6 @@ function Dashboard(props) {
       // debugger
       props
       .setUserLocation()
-      // debugger
       .then(() => {
         setLoading(true);
 
@@ -55,8 +55,7 @@ function Dashboard(props) {
          } else {
           return (
             <div >
-              <Header handleLogout={handleLogout} />
-              <ProfilesDrawer />
+            <AppBarHeader />
 
             </div>
         );
@@ -82,7 +81,8 @@ export default connect(mapStateToProps, { logout, setUserLocation })(Dashboard);
 // <Header handleLogout={handleLogout} user={props.user}/>
 //
 // </div>
-
+// <Header handleLogout={handleLogout} />
+// <ProfilesDrawer />
 // <PrivateRoute path="/profile/:id/about" component={AboutUser}/>
 // <PrivateRoute path="/profile/:id" component={Profile}/>
 // <PrivateRoute path="/about" component={About} />
