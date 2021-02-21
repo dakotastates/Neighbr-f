@@ -11,14 +11,14 @@ function MessageInput(props) {
 
   const handleOnChange = (e) => {
 
-
+// debugger
     const { name, value } = e.target;
     setState(state => ({ ...state, [name]: value }));
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-
+    // debugger
     props
       .createMessage(props.conversation.id, state)
       .then(() => {
@@ -50,7 +50,7 @@ function MessageInput(props) {
               value={state.body}
               />
               <div class="input-group-append">
-                <span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                <button type="submit"><i class="fas fa-location-arrow"></i></button>
               </div>
 
         </div>
