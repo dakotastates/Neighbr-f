@@ -21,6 +21,7 @@ import Avatar from '@material-ui/core/Avatar';
 // import ProfileContainer from './ProfileContainer'
 // import InputBase from '@material-ui/core/InputBase';
 // import SearchIcon from '@material-ui/icons/Search';
+import UsersDrawerContainer from '../../containers/UsersDrawerContainer'
 
 const drawerWidth = 240;
 
@@ -117,7 +118,7 @@ export default function UsersDrawer(props) {
         </div>
 
         <List>
-
+          <UsersDrawerContainer />
         </List>
         <Divider />
 

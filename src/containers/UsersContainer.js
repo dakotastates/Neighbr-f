@@ -58,4 +58,4 @@ const mapStateToProps = (state) => ({
 
 });
 
-export default connect(mapStateToProps, {storeUsers})(UsersContainer)
+export default (UsersContainer)
