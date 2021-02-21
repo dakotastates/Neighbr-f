@@ -15,13 +15,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-// import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
 import Avatar from '@material-ui/core/Avatar';
-// import ProfileContainer from './ProfileContainer'
-// import InputBase from '@material-ui/core/InputBase';
-// import SearchIcon from '@material-ui/icons/Search';
 import UsersDrawerContainer from '../../containers/UsersDrawerContainer'
+import Route from './Route'
 
 const drawerWidth = 240;
 
@@ -29,21 +25,6 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
   },
-  // appBar: {
-  //   zIndex: theme.zIndex.drawer + 1,
-  //   transition: theme.transitions.create(['width', 'margin'], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  // },
-  // appBarShift: {
-  //   marginLeft: drawerWidth,
-  //   width: `calc(100% - ${drawerWidth}px)`,
-  //   transition: theme.transitions.create(['width', 'margin'], {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  // },
   menuButton: {
     marginRight: 36,
   },
@@ -129,12 +110,8 @@ export default function UsersDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Typography paragraph>
-          Data
-        </Typography>
-        <Typography paragraph>
-          More Data
-        </Typography>
+        <Route />
+    
       </main>
     </div>
   );

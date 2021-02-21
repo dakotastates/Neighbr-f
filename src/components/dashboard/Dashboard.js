@@ -17,12 +17,23 @@ import PrivateRoute from "../../helpers/PrivateRoute";
 // import Route from './Route'
 // import ProfilesDrawer from './ProfilesDrawer'
 import AppBarHeader from './AppBar'
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
 
+    },
+  },
+}));
 
 function Dashboard(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const classes = useStyles();
 // debugger
   const handleLogout = () => {
       props.logout();
@@ -45,9 +56,9 @@ function Dashboard(props) {
     }, []);
     // debugger
     if (loading === false){
-          return(
-            <div>Fetching Location</div>
-          )
+        return(
+          <div className={classes.root}><CircularProgress /> <h1>Fetching User Location</h1></div>
+        )
         } else if (error){
           return(
             <div>Unable to Load Location</div>

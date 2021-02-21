@@ -16,7 +16,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
-// import MailIcon from '@material-ui/icons/Mail';
+import MailIcon from '@material-ui/icons/Mail';
 import UsersDrawer from './UsersDrawer'
 // import RightDrawer from './RightDrawer'
 // import ForumIcon from '@material-ui/icons/Forum';
@@ -36,6 +36,8 @@ import UsersDrawer from './UsersDrawer'
 // import NotificationsMenu from './NotificationsMenu'
 // import {accountsMenu, notificationsMenu, messagesMenu} from './MenuActions'
 // import MenuTemplate from './MenuTemplate'
+import MessagesMenu from './MessagesMenu'
+
 
 const drawerWidth = 240;
 
@@ -169,6 +171,8 @@ export default function AppBarHeader() {
   const classes = useStyles();
   const theme = useTheme();
   const [openUsersDrawer, setOpenUsersDrawer] = React.useState(false);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const isMenuOpen = Boolean(anchorEl);
 
   const handleUsersDrawerOpen = () => {
     setOpenUsersDrawer(true);
@@ -177,6 +181,22 @@ export default function AppBarHeader() {
   const handleUsersDrawerClose = () => {
     setOpenUsersDrawer(false);
   };
+
+
+
+  // const handleMenuOpen = (event) => {
+  //   setAnchorEl(event.currentTarget);
+  // };
+  //
+  // const handleMenuClose = () => {
+  //   setAnchorEl(null);
+  // };
+  //
+  // const menuId = 'primary-search-account-menu';
+  // const renderMenu = (
+  //
+  //     <AppBarMenu menuId={menuId} handleMenuClose={handleMenuClose} anchorEl={anchorEl}/>
+  // );
 
   return (
     <div className={classes.root}>
@@ -188,10 +208,21 @@ export default function AppBarHeader() {
         </IconButton>
         <Typography variant="h6" noWrap>The NeighborHood</Typography>
 
+        <div className={classes.grow} />
+        <div className={classes.sectionDesktop}>
+        <MessagesMenu />
+        </div>
       </Toolbar>
     </AppBar>
+
     <UsersDrawer handleDrawerOpen={handleUsersDrawerOpen} handleDrawerClose={handleUsersDrawerClose} open={openUsersDrawer}/>
 
     </div>
   );
 }
+
+
+//
+// <IconButton name="messages"aria-label="show 4 new mails" color="inherit" onClick={handleMenuOpen}>
+//   <MailIcon />
+// </IconButton>

@@ -5,35 +5,24 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux'
 import { storeUsers } from "../actions/UserActions";
-
-// Fake Data Temp
-// const users=[
-//   {
-//     id: 1,
-//     name: "User 1",
-//     avatar: "avatar",
-//     distance: "3 ft"
-//   },
-//   {
-//     id: 2,
-//     name: "User 2",
-//     avatar: "avatar",
-//     distance: "10 miles"
-//   },
-//   {
-//     id: 3,
-//     name: "User 3",
-//     avatar: "avatar",
-//     distance: "455 ft"
-//   }
-// ]
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
 
 function UsersDrawerContainer(props) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  const classes = useStyles();
 
   useEffect(() => {
     props
@@ -52,7 +41,7 @@ function UsersDrawerContainer(props) {
 
   if (loading === false){
         return(
-          <div>Loading Users</div>
+          <div className={classes.root}><CircularProgress /></div>
         )
       } else if (error){
         return(
@@ -62,7 +51,7 @@ function UsersDrawerContainer(props) {
           usersList = props.users.map(user =>{
            return(
             <ListItem button key={user.id}>
-              <ListItemIcon><Avatar>{user.first_name.charAt(0)}</Avatar></ListItemIcon>
+              <ListItemIcon>{user.profile.featured_image ? <Avatar alt={user.first_name} src={user.profile.featured_image.url}/> : <Avatar>{user.first_name.charAt(0)}</Avatar> }</ListItemIcon>
               <ListItemText primary={user.first_name} />
            </ListItem>
          )
