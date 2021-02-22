@@ -13,7 +13,7 @@ function ConversationHeader(props) {
           <span class="online_icon"></span>
         </div>
         <div class="user_info">
-          <span>{props.selectedUser.user.first_name}</span>
+          <span>{props.selectedUser.first_name}</span>
         </div>
         <div class="video_cam">
           <span><i class="fas fa-video"></i></span>

@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import DeleteIcon from '@material-ui/icons/Delete';
+// import ChatProfileContainer from '../../containers/ChatProfileContainer'
+import ProfileChatModal from '../../helpers/ProfileChatModal'
 
 
 const StyledMenuItem = withStyles((theme) => ({
@@ -19,9 +22,19 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 function ConversationsList(props) {
+  const [selectedUser, setSelectedUser] = useState({});
+  const [open, setOpen] = useState(false);
+  const handleOpen = (props) => {
+    setSelectedUser(props)
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <StyledMenuItem>
+    <StyledMenuItem onClick={handleOpen}>
       <ListItemIcon>
         <Avatar>{props.conversation.receiver.first_name.charAt(0)}</Avatar>
       </ListItemIcon>
@@ -29,6 +42,7 @@ function ConversationsList(props) {
       <ListItemIcon>
         <DeleteIcon />
       </ListItemIcon>
+      <ProfileChatModal open={open} onClose={handleClose} currentUser={props.currentUser} selectedUser={props.conversation.receiver}/>
     </StyledMenuItem>
   )
 

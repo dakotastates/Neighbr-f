@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 function ProfileHeader(props) {
 
 const currentUserHeader = () => {
-  if (props.currentUser.id === props.selectedUser.user.id){
+  if (props.currentUser.id === props.selectedUser.id){
     return(
       <div class="video_cam">
         <span>Your profile</span>
@@ -31,7 +31,7 @@ const currentUserHeader = () => {
           <span class="online_icon"></span>
         </div>
         <div class="user_info">
-          <span>{props.selectedUser.user.first_name}</span>
+          <span>{props.selectedUser.first_name}</span>
         </div>
           {currentUserHeader()}
       </div>

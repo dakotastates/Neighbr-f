@@ -10,7 +10,7 @@ function Chat(props) {
   const [error, setError] = useState();
   const [state, setState] = useState({
     sender_id: props.currentUser.id,
-    receiver_id: props.user.user.id
+    receiver_id: props.selectedUser.id
   });
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Chat(props) {
         return(
             <div>
 
-                <Conversation toggle={props.toggle} selected_user={props.user} currentUser={props.currentUser} conversation={props.conversation}/>
+                <Conversation toggle={props.toggle} selectedUser={props.selectedUser} currentUser={props.currentUser} conversation={props.conversation}/>
 
 
             </div>

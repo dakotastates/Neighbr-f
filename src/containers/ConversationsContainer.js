@@ -36,7 +36,7 @@ if (loading === false){
          if (conversation){
            if (conversation.messages.length > 0){
               return(
-                <ConversationsList key={conversation.id} conversation={conversation}/>
+                <ConversationsList key={conversation.id} currentUser={props.user} conversation={conversation}/>
               )
             }
         } else {
@@ -55,6 +55,7 @@ if (loading === false){
 
 const mapStateToProps = (state) => ({
   conversations: state.messagesStore.conversations,
+  user: state.usersStore.user,
 
 
 });

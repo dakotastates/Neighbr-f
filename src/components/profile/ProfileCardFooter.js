@@ -10,7 +10,7 @@ function ProfileCardFooter(props) {
 
 
 
-    if (props.currentUser.id === props.selectedUser.user.id){
+    if (props.currentUser.id === props.selectedUser.id){
       return(
         <div class="card-footer">
           <button>Edit</button>

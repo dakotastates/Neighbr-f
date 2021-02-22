@@ -10,10 +10,10 @@ function ChatProfileContainer(props) {
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
-
+// debugger
   useEffect(() => {
     props
-    .getProfile(props.user.user.id)
+    .getProfile(props.selectedUser.id)
     .then(() => {
       setLoading(true);
 
