@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ProfileChatModal(props) {
+
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -40,22 +41,32 @@ function ProfileChatModal(props) {
   //   setOpen(true);
   // };
   //
+  //
+  //
   // const handleClose = () => {
   //   setOpen(false);
   // };
+// debugger
+  // if (true ){
+  //   debugger
+  //   setOpen(true)
+  // } else {
+  //   handleClose()
+  // }
 
   // props.modalController ? setOpen(true) : setOpen(false)
-
+// debugger
   const body = (
     <div class="col-md-8 col-xl-6 chat">
-
       <ChatProfileContainer currentUser={props.currentUser} selectedUser={props.selectedUser}/>
     </div>
   );
+  // if (props.open){
+    // debugger
+  // }
 
   return (
     <div>
-
       <Modal
         open={props.open}
         onClose={props.onClose}

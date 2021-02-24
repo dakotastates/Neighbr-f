@@ -35,6 +35,7 @@ import ProfileChatModal from '../../helpers/ProfileChatModal'
 // }));
 
 function GoogleMap(props) {
+
   // const [showingInfoWindow, setShowingInfoWindow] = useState(false);
   // const [activeMarker, setActiveMarker] = useState({});
   const [selectedUser, setSelectedUser] = useState({});
@@ -80,6 +81,7 @@ function GoogleMap(props) {
       return(<Marker
         key={index}
         name={user.first_name}
+        // animation={props.google.maps.Animation.DROP}
         position={{
           lat: user.location.latitude,
           lng: user.location.longitude
@@ -87,9 +89,10 @@ function GoogleMap(props) {
         icon={{
           url: image_url,
           anchor: new props.google.maps.Point(32,32),
-          scaledSize: new props.google.maps.Size(64,64)
+          scaledSize: new props.google.maps.Size(64,64),
 
         }}
+
         user={user}
         onClick={handleOpen}
         />)
@@ -145,6 +148,8 @@ function GoogleMap(props) {
 }
 
 export default GoogleMap
+
+// <ProfileChatModal open={open} onClose={handleClose} currentUser={props.currentUser} selectedUser={selectedUser.user}/>
 
 // <InfoWindow
 //   marker = { activeMarker }

@@ -22,11 +22,12 @@ const StyledMenuItem = withStyles((theme) => ({
 }))(MenuItem);
 
 function ConversationsList(props) {
-  const [selectedUser, setSelectedUser] = useState({});
+  // const [selectedUser, setSelectedUser] = useState({});
   const [open, setOpen] = useState(false);
-  const handleOpen = (props) => {
-    setSelectedUser(props)
+  const handleOpen = () => {
+    props.handleClose()
     setOpen(true);
+
   };
 
   const handleClose = () => {
@@ -34,6 +35,7 @@ function ConversationsList(props) {
   };
 
   return (
+    <div>
     <StyledMenuItem onClick={handleOpen}>
       <ListItemIcon>
         <Avatar>{props.conversation.receiver.first_name.charAt(0)}</Avatar>
@@ -42,8 +44,9 @@ function ConversationsList(props) {
       <ListItemIcon>
         <DeleteIcon />
       </ListItemIcon>
-      <ProfileChatModal open={open} onClose={handleClose} currentUser={props.currentUser} selectedUser={props.conversation.receiver}/>
     </StyledMenuItem>
+      <ProfileChatModal open={open} onClose={handleClose} currentUser={props.currentUser} selectedUser={props.conversation.receiver}/>
+    </div>
   )
 
 }
@@ -52,7 +55,7 @@ function ConversationsList(props) {
 export default ConversationsList;
 
 
-
+  // <ProfileChatModal open={open} onClose={handleClose} currentUser={props.currentUser} selectedUser={props.conversation.receiver}/>
 // <ul class="dropdown-menu">
 //
 //

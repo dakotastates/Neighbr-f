@@ -70,7 +70,7 @@ export default function MessagesMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-      <ConversationsContainer />
+      <ConversationsContainer handleClose={handleClose} />
       </StyledMenu>
     </div>
   );

@@ -36,7 +36,7 @@ if (loading === false){
          if (conversation){
            if (conversation.messages.length > 0){
               return(
-                <ConversationsList key={conversation.id} currentUser={props.user} conversation={conversation}/>
+                <ConversationsList key={conversation.id} handleClose={props.handleClose} currentUser={props.user} conversation={conversation}/>
               )
             }
         } else {
