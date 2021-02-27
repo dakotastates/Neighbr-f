@@ -8,9 +8,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
-import MailIcon from '@material-ui/icons/Mail';
+// import MailIcon from '@material-ui/icons/Mail';
+import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
-import ConversationsContainer from '../../containers/ConversationsContainer'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const StyledMenu = withStyles({
   paper: {
@@ -34,19 +35,19 @@ const StyledMenu = withStyles({
   />
 ));
 
-// const StyledMenuItem = withStyles((theme) => ({
-//   root: {
-//     '&:focus': {
-//       backgroundColor: theme.palette.primary.main,
-//       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-//         color: theme.palette.common.white,
-//       },
-//     },
-//   },
-// }))(MenuItem);
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '&:focus': {
+      backgroundColor: theme.palette.primary.main,
+      '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+        color: theme.palette.common.white,
+      },
+    },
+  },
+}))(MenuItem);
 
 
-export default function MessagesMenu() {
+export default function AccountMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -59,8 +60,8 @@ export default function MessagesMenu() {
 
   return (
     <div>
-    <IconButton name="messages"aria-label="show 4 new mails" color="inherit" onClick={handleClick}>
-      <MailIcon />
+    <IconButton name="account"aria-label="account menu" color="inherit" onClick={handleClick}>
+      <AccountCircle />
     </IconButton>
 
       <StyledMenu
@@ -70,30 +71,17 @@ export default function MessagesMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-      <ConversationsContainer handleClose={handleClose} />
+
+
+
+      <StyledMenuItem onClick={props.handleLogout}>
+        <ListItemIcon>
+          <ExitToAppIcon fontSize="small" />
+        </ListItemIcon>
+        <ListItemText primary="Logout" />
+      </StyledMenuItem>
+
       </StyledMenu>
     </div>
   );
 }
-
-
-
-
-// <StyledMenuItem>
-//   <ListItemIcon>
-//     <SendIcon fontSize="small" />
-//   </ListItemIcon>
-//   <ListItemText primary="Sent mail" />
-// </StyledMenuItem>
-// <StyledMenuItem>
-//   <ListItemIcon>
-//     <DraftsIcon fontSize="small" />
-//   </ListItemIcon>
-//   <ListItemText primary="Drafts" />
-// </StyledMenuItem>
-// <StyledMenuItem>
-//   <ListItemIcon>
-//     <InboxIcon fontSize="small" />
-//   </ListItemIcon>
-//   <ListItemText primary="Inbox" />
-// </StyledMenuItem>

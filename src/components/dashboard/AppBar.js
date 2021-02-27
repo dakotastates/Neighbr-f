@@ -37,6 +37,7 @@ import UsersDrawer from './UsersDrawer'
 // import {accountsMenu, notificationsMenu, messagesMenu} from './MenuActions'
 // import MenuTemplate from './MenuTemplate'
 import MessagesMenu from './MessagesMenu'
+import AccountMenu from './AccountMenu'
 
 
 const drawerWidth = 240;
@@ -166,7 +167,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function AppBarHeader() {
+export default function AppBarHeader(props) {
   // debugger
   const classes = useStyles();
   const theme = useTheme();
@@ -211,6 +212,7 @@ export default function AppBarHeader() {
         <div className={classes.grow} />
         <div className={classes.sectionDesktop}>
         <MessagesMenu />
+        <AccountMenu handleLogout={props.handleLogout}/>
         </div>
       </Toolbar>
     </AppBar>

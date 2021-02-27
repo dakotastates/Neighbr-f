@@ -66,7 +66,7 @@ function Dashboard(props) {
          } else {
           return (
             <div >
-            <AppBarHeader />
+            <AppBarHeader handleLogout={handleLogout} />
 
             </div>
         );
