@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from "react-redux";
 import { storeUser, createUser } from "../../actions/UserActions";
 import { login } from "../../actions/AuthActions";
+import Typography from '@material-ui/core/Typography';
+
 
 class Signup extends React.Component {
   state = {
@@ -39,7 +41,9 @@ class Signup extends React.Component {
     render(){
         return(
             <div>
-                <h1>SignUp Form</h1>
+                <Typography component="h1" variant="h5">
+                  Sign Up!
+                </Typography>
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"

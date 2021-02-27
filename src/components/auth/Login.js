@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from "react-redux";
 import { storeUser } from "../../actions/UserActions";
 import { login } from "../../actions/AuthActions";
+import Typography from '@material-ui/core/Typography';
+
 
 
 
@@ -34,7 +36,9 @@ class Login extends React.Component {
 
         return(
             <div>
-                <h1>Login Form</h1>
+              <Typography component="h1" variant="h5">
+                Sign in
+              </Typography>
                 <form onSubmit={this.onSubmit}>
                     <input
                         type="text"
