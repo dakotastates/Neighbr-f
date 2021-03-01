@@ -1,10 +1,11 @@
 import React from 'react'
+import Avatar from '@material-ui/core/Avatar';
 
 
 function Message(props) {
 
 
-const { message, currentUser } = props;
+const { message, currentUser, selectedUser } = props;
         // debugger
 
         const userMessageDelegation = () => {
@@ -13,10 +14,10 @@ const { message, currentUser } = props;
               <div class="d-flex justify-content-end mb-4">
                 <div class="msg_container_send">
                   {message.body}
-                  <span class="msg_time_send">8:55 AM, Today</span>
+                  <span class="msg_time_send">{message.created_at}</span>
                 </div>
                 <div class="img_cont_msg">
-                  <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"/>
+                <Avatar alt={currentUser.first_name} src={currentUser.profile.featured_image.url}/> : <Avatar>{currentUser.first_name.charAt(0)}</Avatar>
                 </div>
               </div>
             )
@@ -24,11 +25,11 @@ const { message, currentUser } = props;
             return (
               <div class="d-flex justify-content-start mb-4">
                 <div class="img_cont_msg">
-                  <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg" class="rounded-circle user_img_msg"/>
+                  <Avatar alt={selectedUser.first_name} src={selectedUser.profile.featured_image.url}/> : <Avatar>{selectedUser.first_name.charAt(0)}</Avatar>
                 </div>
                 <div class="msg_container">
                   {message.body}
-                  <span class="msg_time">8:40 AM, Today</span>
+                  <span class="msg_time">{message.created_at}</span>
                 </div>
               </div>
             )

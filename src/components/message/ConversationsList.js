@@ -40,7 +40,7 @@ function ConversationsList(props) {
       <ListItemIcon>
         <Avatar>{props.conversation.receiver.first_name.charAt(0)}</Avatar>
       </ListItemIcon>
-      <ListItemText primary={props.conversation.receiver.first_name} secondary={props.conversation.messages.slice(-1)[0].body}/>
+      <ListItemText primary={props.conversation.receiver.first_name} secondary={props.conversation.messages.slice(-1)[0].body + " " + props.conversation.updated_at_ago} />
       <ListItemIcon>
         <DeleteIcon />
       </ListItemIcon>

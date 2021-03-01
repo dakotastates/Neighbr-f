@@ -4,12 +4,12 @@ import Message from "./Message";
 
 function Messages(props) {
 
-  const { messages, currentUser } = props;
+  const { messages, currentUser, selectedUser } = props;
 
   const messageList = messages.map(message => {
     return (
       <ul>
-        <Message key={message.id} message={message} currentUser={currentUser}/>
+        <Message key={message.id} message={message} currentUser={currentUser} selectedUser={selectedUser}/>
       </ul>
     )
   });

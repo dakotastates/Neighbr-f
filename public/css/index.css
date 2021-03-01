@@ -68,15 +68,16 @@ body,html{
     }
 }
 
-  .chat{
-    margin-top: auto;
-    margin-bottom: auto;
-  }
+    .chat{
+        margin-top: auto;
+        margin-bottom: auto;
+      }
   .card{
     height: 500px;
     border-radius: 15px !important;
     /* background: url(var(--image)) no-repeat fixed; */
     /* background-color: grey !important; */
+    background-image: url(https://source.unsplash.com/random);
   }
 
   .profile-card{
