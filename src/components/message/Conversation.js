@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Messages from "./Messages";
 import MessageInput from "./MessageInput"
 import ConversationHeader from "./ConversationHeader"
@@ -9,6 +9,14 @@ import { createMessage, storeMessages } from "../../actions/MessageActions";
 function Conversation(props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+  // const bottomRef = useRef();
+
+  // const scrollToBottom = () => {
+  //      bottomRef.current.scrollIntoView({
+  //      behavior: "smooth",
+  //      block: "start",
+  //      });
+  //  };
 
 
 useEffect(() => {
