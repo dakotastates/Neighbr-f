@@ -8,6 +8,8 @@ import ListItem from '@material-ui/core/ListItem';
 import { withStyles } from '@material-ui/core/styles';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
+import ProfilePostCard from './ProfilePostCard'
+import ProfilePostForm from './ProfilePostForm'
 
 
 const styles = theme => ({
@@ -94,6 +96,11 @@ function ProfileCardBody(props) {
                         <div class="col-lg-6 pr-lg-1 mb-2"><img src="https://images.unsplash.com/photo-1453791052107-5c843da62d97?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="" class="img-fluid rounded shadow-sm" /></div>
                         <div class="col-lg-6 pl-lg-1"><img src="https://images.unsplash.com/photo-1475724017904-b712052c192a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="" class="img-fluid rounded shadow-sm" /></div>
                     </div>
+
+                </div>
+                <div class="px-4 py-3">
+                    <ProfilePostForm currentUser={props.currentUser}/>
+                    <ProfilePostCard />
                 </div>
             </div>
 

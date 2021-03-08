@@ -38,6 +38,7 @@ import UsersDrawer from './UsersDrawer'
 // import MenuTemplate from './MenuTemplate'
 import MessagesMenu from './MessagesMenu'
 import AccountMenu from './AccountMenu'
+import GlobalChatModal from '../globalchat/GlobalChatModal'
 
 
 const drawerWidth = 240;
@@ -212,6 +213,7 @@ export default function AppBarHeader(props) {
         <div className={classes.grow} />
         <div className={classes.sectionDesktop}>
         <MessagesMenu />
+        <GlobalChatModal currentUser={props.currentUser}/>
         <AccountMenu handleLogout={props.handleLogout}/>
         </div>
       </Toolbar>

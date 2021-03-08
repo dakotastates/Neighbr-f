@@ -1,10 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { createBulletin } from "../../actions/BulletinActions";
+import { connect } from 'react-redux'
+
 
 
 
 function ProfilePostForm(props) {
+  const [state, setState] = useState({
+    bulletin: "",
+    user_id: props.currentUser.id,
+    profile_id: null
+  });
 
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setState(state => ({ ...state, [name]: value }));
+  };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    props
+      .createBulletin(state)
+      .then(() => {
+
+      })
+      .catch((error) => {
+        alert(error);
+      });
+    setState({
+      bulletin: ""
+    })
+  };
 
     // const { handleLogout } = props;
 
@@ -26,7 +53,7 @@ function ProfilePostForm(props) {
                 <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                     <div class="form-group">
                         <label class="sr-only" for="message">post</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                        <textarea class="form-control" name="bulletin" id="message" rows="3" onChange={handleOnChange} placeholder="What are you thinking?"></textarea>
                     </div>
 
                 </div>
@@ -42,7 +69,7 @@ function ProfilePostForm(props) {
             </div>
             <div class="btn-toolbar justify-content-between">
                 <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">share</button>
+                    <button type="submit" onClick={onSubmit} class="btn btn-primary">share</button>
                 </div>
                 <div class="btn-group">
                     <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
@@ -62,4 +89,4 @@ function ProfilePostForm(props) {
   )
 }
 
-export default ProfilePostForm;
+export default connect(null, {createBulletin})(ProfilePostForm);
