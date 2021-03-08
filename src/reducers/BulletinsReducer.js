@@ -19,6 +19,14 @@ export default function BulletinsReducer(
         bulletins: [...state.bulletins, payload]
       };
 
+      case "UPDATE_BULLETIN":
+      // debugger
+      return {
+        ...state,
+        bulletin: payload,
+        bulletins: [],
+      };
+
       case "STORAGE_BULLETINS":
       // debugger
       return {
