@@ -37,7 +37,7 @@ function UsersDrawerContainer(props) {
 
   }, []);
 
-  let usersList;
+  let sortedByDist;
 
   if (loading === false){
         return(
@@ -48,18 +48,55 @@ function UsersDrawerContainer(props) {
           <div>Unable to Load Users.</div>
         )
        } else {
-          usersList = props.users.map(user =>{
-           return(
-             <UserDrawerList key={user.id} currentUser={props.user} selectedUser={user}/>
-         )
+         const userDist = []
+
+         function getDistance(lat1, lon1, lat2, lon2) {
+          var R = 6371; // km
+          var dLat = toRad(lat2-lat1);
+          var dLon = toRad(lon2-lon1);
+          var lat1 = toRad(lat1);
+          var lat2 = toRad(lat2);
+
+          var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(lat1) * Math.cos(lat2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          var d = R * c;
+          return d;
+        }
+
+        // Converts numeric degrees to radians
+        function toRad(Value)
+        {
+            return Value * Math.PI / 180;
+        }
+
+
+          const usersList = props.users.map(user =>{
+             let distance = getDistance(props.user.location.latitude, props.user.location.longitude, user.location.latitude, user.location.longitude)
+             // debugger
+             userDist.push({
+              user: user,
+              distance: distance
+            })
+
          })
+        const  sortByDist = userDist.sort((a,b) => a.distance - b.distance)
+
+
+
+          sortedByDist = sortByDist.map(user =>{
+            // debugger
+          return(
+            <UserDrawerList key={user.id} currentUser={props.user} selectedUser={user.user}/>
+        )
+        })
        }
 
 
 
   return (
     <div >
-    {usersList}
+    {sortedByDist}
     </div>
   );
 }

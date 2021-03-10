@@ -60,7 +60,7 @@ function BulletinList(props) {
       </p>
       </div>
       <div class="profile-card-footer">
-         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+         <a onClick={handleLike} class="card-link"><i class="fa fa-gittip"></i> Like</a>
          <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
       </div>
    </div>
