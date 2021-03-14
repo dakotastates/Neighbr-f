@@ -16,6 +16,15 @@ const _likeObject = (state) => ({
 
 });
 
+const _commentObject = (state) => ({
+  bulletin: {
+    id: state.id,
+    bulletin: state.bulletin,
+    user_id: state.user_id
+  },
+
+});
+
 export const createBulletin = (state) => {
   // debugger
   let configObj = {
@@ -44,6 +53,37 @@ export const createBulletin = (state) => {
 
 
 };
+
+
+export const createComment = (state) => {
+  // debugger
+  let configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(_bulletinObject(state)),
+  };
+
+   return async (dispatch) => {
+     const res = await fetch("http://localhost:3000/api/v1/bulletins" + `/${state.bulletin_id}/comments`, configObj);
+     const json = await res.json();
+     // debugger
+     if (json.error) {
+        throw new Error(json.error /*+ " " + json.message*/);
+      }
+      // localStorage.setItem("token", json.jwt);
+      dispatch({
+        type: "CREATE_COMMENT",
+        payload: json.comment,
+      });
+      // debugger
+   }
+
+
+};
+
 
 export const updateBulletin = (state) => {
   // debugger

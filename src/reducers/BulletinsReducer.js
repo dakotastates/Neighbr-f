@@ -1,5 +1,5 @@
 export default function BulletinsReducer(
-  state = { bulletin: {}, bulletins: [] },
+  state = { bulletin: {}, bulletins: [], comment: {}, comments:[] },
   { type, payload }
 ) {
   switch (type) {
@@ -18,6 +18,14 @@ export default function BulletinsReducer(
         bulletin: payload,
         bulletins: [...state.bulletins, payload]
       };
+
+      case "CREATE_COMMENT":
+      // debugger
+        return {
+          ...state,
+          comment: payload,
+          comments: [...state.comments, payload]
+        };
 
       case "UPDATE_BULLETIN":
       // debugger

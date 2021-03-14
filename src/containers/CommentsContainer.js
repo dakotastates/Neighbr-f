@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { storeBulletins, updateBulletin } from "../actions/BulletinActions";
+import { storeComments, createComment } from "../actions/BulletinActions";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Bulletin from '../components/bulletin/Bulletin'
+import Comment from '../components/bulletin/Comment'
 // import UserDrawerList from '../components/profile/UserDrawerList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex', 
+    display: 'flex',
     '& > * + *': {
       marginLeft: theme.spacing(2),
     },
   },
 }));
 
-function BulletinsContainer(props) {
+function CommentsContainer(props) {
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
@@ -23,7 +23,7 @@ function BulletinsContainer(props) {
 
   useEffect(() => {
     props
-    .storeBulletins()
+    .storeComments()
     .then(() => {
       setLoading(true);
 
@@ -34,7 +34,7 @@ function BulletinsContainer(props) {
 
   }, []);
 
-  let bulletinsList;
+  let commentsList;
 
   if (loading === false){
         return(
@@ -46,11 +46,11 @@ function BulletinsContainer(props) {
         )
        } else {
          // debugger
-          if (props.bulletins.length > 0){
-          bulletinsList = props.bulletins.map(bulletin =>{
+          if (props.comments.length > 0){
+          commentsList = props.comments.map(comment =>{
 
            return(
-          <Bulletin currentUser={props.user} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
+          <Comment currentUser={props.user} createComment={props.createComment} comment={commment}/>
          )
          })
        } else {
@@ -62,14 +62,14 @@ function BulletinsContainer(props) {
 
   return (
     <div >
-    {bulletinsList}
+    {commentsList}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
-  bulletins: state.bulletinsStore.bulletins,
+  comments: state.bulletinsStore.comments,
   user: state.usersStore.user
 });
 
-export default connect(mapStateToProps, {storeBulletins, updateBulletin})(BulletinsContainer);
+export default connect(mapStateToProps, {storeComments, createComment})(CommentsContainer);
