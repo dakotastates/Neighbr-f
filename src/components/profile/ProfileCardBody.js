@@ -10,6 +10,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import ProfilePostCard from './ProfilePostCard'
 import ProfilePostForm from './ProfilePostForm'
+import NeighborshipsContainer from '../../containers/NeighborshipsContainer'
 
 
 const styles = theme => ({
@@ -73,7 +74,17 @@ function ProfileCardBody(props) {
                             <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Bulletins</small>
                         </li>
                         <li class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block">{neighborships.length}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Neighborships</small>
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-mdb-container="body"
+                            data-mdb-toggle="popover"
+                            data-mdb-placement="bottom"
+                            data-mdb-content="Testing Popover"
+                            >
+                            Popover
+                          </button>
+
                         </li>
 
                     </ul>
@@ -112,7 +123,7 @@ function ProfileCardBody(props) {
 export default withStyles(styles)(ProfileCardBody);
 
 
-
+  // <h5 class="font-weight-bold mb-0 d-block">{neighborships.length}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Neighborships</small>
 
 
 // {toggleForm.name ? <div> <EditUser data={"name"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> {first_name} {middle_name} {last_name}  {toggleEdit ? <button name="name" onClick={handleEdit}>Edit Name</button> : null}<br/> </div>}
