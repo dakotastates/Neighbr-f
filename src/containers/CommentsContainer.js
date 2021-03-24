@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { storeComments, createComment } from "../actions/BulletinActions";
+import { createComment } from "../actions/BulletinActions";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Comment from '../components/bulletin/Comment'
@@ -21,42 +21,42 @@ function CommentsContainer(props) {
   const [error, setError] = useState();
   const classes = useStyles();
 
-  useEffect(() => {
-    props
-    .storeComments()
-    .then(() => {
-      setLoading(true);
+  // useEffect(() => {
+  //   props
+  //   .storeComments()
+  //   .then(() => {
+  //     setLoading(true);
+  //
+  //   })
+  //   .catch((error) => {
+  //     setError(error);
+  //   });
+  //
+  // }, []);
 
-    })
-    .catch((error) => {
-      setError(error);
-    });
 
-  }, []);
 
   let commentsList;
 
-  if (loading === false){
-        return(
-          <div className={classes.root}><CircularProgress /></div>
-        )
-      } else if (error){
-        return(
-          <div>Unable to Load Bulletins.</div>
-        )
-       } else {
+  // if (loading === false){
+  //       return(
+  //         <div className={classes.root}><CircularProgress /></div>
+  //       )
+  //     } else if (error){
+  //       return(
+  //         <div>Unable to Load Bulletins.</div>
+  //       )
+  //      } else {
          // debugger
-          if (props.comments.length > 0){
-          commentsList = props.comments.map(comment =>{
+          if (props.bulletin.comments.length > 0){
+          commentsList = props.bulletin.comments.map(comment =>{
 
            return(
-          <Comment currentUser={props.user} createComment={props.createComment} comment={commment}/>
+          <Comment currentUser={props.user} createComment={props.createComment} comment={comment}/>
          )
          })
-       } else {
-         return <h1>No Bulletins Yet</h1>
-       }
-       }
+       } 
+       // }
 
 
 
@@ -72,4 +72,4 @@ const mapStateToProps = (state) => ({
   user: state.usersStore.user
 });
 
-export default connect(mapStateToProps, {storeComments, createComment})(CommentsContainer);
+export default connect(mapStateToProps, {createComment})(CommentsContainer);

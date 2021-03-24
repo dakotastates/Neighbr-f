@@ -13,12 +13,19 @@ export default function ProfileReducer(
 
 
 
-    case "UPDATE_PROFILE":
-      // debugger
-    return {
-        ...state,
-        profile: payload,
-      };
+    // case "ADD_IMAGE":
+    //   // debugger
+    // return {
+    //     ...state,
+    //     profile: payload,
+    //   };
+
+      case "UPDATE_PROFILE":
+        // debugger
+      return {
+          ...state,
+          profile: payload,
+        };
 
 
     default:

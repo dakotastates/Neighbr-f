@@ -69,6 +69,31 @@ export const updateProfileImage = (formData, user_id, profile_id) => {
   };
 };
 
+export const addImage = (formData, user_id, profile_id) => {
+  // debugger
+  // console.log(state)
+  let options = {
+    method: "PATCH",
+
+    body: formData,
+  };
+
+  return async (dispatch) => {
+    // eslint-disable-next-line
+    const res = await fetch("http://localhost:3000/api/v1/users" + `/${user_id}/profiles` + `/${profile_id}`, options);
+
+    const json = await res.json();
+    debugger
+    if (json.errors) {
+      throw new Error(json.errors /*+ " " + json.message*/);
+    }
+    dispatch({
+      type: "UPDATE_PROFILE",
+      payload: json,
+    });
+  };
+};
+
 export const updateProfile = (state) => {
   debugger
   // console.log(state)
