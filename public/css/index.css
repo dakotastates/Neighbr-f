@@ -76,8 +76,8 @@ body,html{
     height: 500px;
     border-radius: 15px !important;
     /* background: url(var(--image)) no-repeat fixed; */
-    /* background-color: grey !important; */
-    background-image: url(https://source.unsplash.com/random);
+    background-color: white !important;
+    /* background-image: url(https://source.unsplash.com/random); */
   }
 
   .profile-card{
@@ -98,6 +98,7 @@ body,html{
   .card-header{
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
+    background-color: lightgrey !important;
   }
 
   .profile-card-header{
@@ -106,8 +107,9 @@ body,html{
   }
 
  .card-footer{
-  border-radius: 0 0 15px 15px !important;
-    border-top: 0 !important;
+   border-radius: 0 0 15px 15px !important;
+   border-top: 0 !important;
+   background-color: lightgrey !important;
 }
 .profile-card-footer{
  /* border-radius: 0 0 15px 15px !important; */

@@ -19,6 +19,10 @@ function EditProfile(props) {
     headline: {
       headline: props.profile.headline.headline,
       visable: props.profile.headline.visable
+    },
+    city: {
+      city: props.profile.city.city,
+      visable: props.profile.city.visable
     }
 
   });
@@ -70,6 +74,12 @@ function EditProfile(props) {
     <div>
       <input type="text" name="headline" placeholder="Headline" value={state.headline.headline} onChange={handleOnChange}  />
       <button onClick={()=>props.toggle({headline: false})}>Cancel</button> <input type="submit" value="Update Headline"/>
+    </div>
+  }else if (props.data === "city"){
+    input =
+    <div>
+      <input type="text" name="city" placeholder="Current Location" value={state.city.city} onChange={handleOnChange}  />
+      <button onClick={()=>props.toggle({headline: false})}>Cancel</button> <input type="submit" value="Update Location"/>
     </div>
   }
 

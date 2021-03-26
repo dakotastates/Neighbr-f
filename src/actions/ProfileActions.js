@@ -15,6 +15,11 @@ const _profileObject = (state) => ({
       status: state.status.status,
       visable: state.status.visable
     }
+    ,
+    city_attributes:{
+      city: state.city.city,
+      visable: state.city.visable
+    }
   },
 
 });

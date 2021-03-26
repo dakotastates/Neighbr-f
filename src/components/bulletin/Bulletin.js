@@ -10,68 +10,46 @@ function Bulletin(props) {
   });
 
 
-  const handleLike = (e) => {
-    e.preventDefault();
-    // debugger
-    props
-      .updateBulletin(state)
-      .then(() => {
-
-      })
-      .catch((error) => {
-        alert(error);
-      });
-
-  };
+  // const handleLike = (e) => {
+  //   e.preventDefault();
+  //   // debugger
+  //   props
+  //     .updateBulletin(state)
+  //     .then(() => {
+  //
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     });
+  //
+  // };
 
 
   return (
+    <div class="panel">
+      <div class="panel-body">
+        <div class="media-block">
+          <a class="media-left" href="#"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" /></a>
+          <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
 
-    <div class="panel panel-default">
-    <div class="panel-body">
-                   <section class="post-heading">
-                        <div class="row">
-                            <div class="col-md-11">
-                                <div class="media">
-                                  <div class="media-left">
-                                    <a href="#">
-                                      <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="..."/>
-                                    </a>
-                                  </div>
-                                  <div class="media-body">
-                                    <a href="#" class="anchor-username"><h4 class="media-heading">Bayu Darmantra</h4></a>
-                                    <a href="#" class="anchor-time">51 mins</a>
-                                  </div>
-                                </div>
-                            </div>
-                             <div class="col-md-1">
-                                 <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
-                             </div>
-                        </div>
-                   </section>
-                   <section class="post-body">
-                       <p>{props.bulletin.bulletin}</p>
-                   </section>
-                   <section class="post-footer">
-                       <hr/>
-                       <div class="post-footer-option container">
-                            <ul class="list-unstyled">
-                                <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
-                                <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
-                            </ul>
-                       </div>
-                       <div class="post-footer-comment-wrapper">
-                           <div class="comment-form">
-                            <CommentForm currentUser={props.currentUser} bulletin={props.bulletin}/>
-                           </div>
+          <div class="media-body">
+            <p>consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            <div class="pad-ver">
 
-                           <CommentsContainer bulletin={props.bulletin} />
-
-                       </div>
-                   </section>
-                </div>
+                <div class="bg-white">
+                  <div class="d-flex flex-row fs-12">
+                    <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                    <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+                    <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                  </div>
               </div>
+
+            </div>
+            <hr/>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
   )
@@ -80,6 +58,55 @@ function Bulletin(props) {
 
 
 export default Bulletin
+
+
+
+// <div class="panel panel-default">
+// <div class="panel-body">
+//                <section class="post-heading">
+//                     <div class="row">
+//                         <div class="col-md-11">
+//                             <div class="media">
+//                               <div class="media-left">
+//                                 <a href="#">
+//                                   <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="..."/>
+//                                 </a>
+//                               </div>
+//                               <div class="media-body">
+//                                 <a href="#" class="anchor-username"><h4 class="media-heading">Bayu Darmantra</h4></a>
+//                                 <a href="#" class="anchor-time">51 mins</a>
+//                               </div>
+//                             </div>
+//                         </div>
+//                          <div class="col-md-1">
+//                              <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+//                          </div>
+//                     </div>
+//                </section>
+//                <section class="post-body">
+//                    <p>{props.bulletin.bulletin}</p>
+//                </section>
+//                <section class="post-footer">
+//                    <hr/>
+//                    <div class="post-footer-option container">
+//                         <ul class="list-unstyled">
+//                             <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+//                             <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+//                             <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+//                         </ul>
+//                    </div>
+//                    <div class="post-footer-comment-wrapper">
+//                        <div class="comment-form">
+//                         <CommentForm currentUser={props.currentUser} bulletin={props.bulletin}/>
+//                        </div>
+//
+//                        <CommentsContainer bulletin={props.bulletin} />
+//
+//                    </div>
+//                </section>
+//             </div>
+//           </div>
+
 
 
 

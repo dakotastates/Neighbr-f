@@ -36,7 +36,7 @@ function ProfileChatModal(props) {
   const [modalStyle] = React.useState(getModalStyle);
 
   const body = (
-    <div class="col-md-8 col-xl-6 chat">
+    <div class="col-md-8 col-xl-6 chat"> 
       <ChatProfileContainer currentUser={props.currentUser} selectedUser={props.selectedUser}/>
     </div>
   );

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Messages from "./Messages";
 import MessageInput from "./MessageInput"
 import ConversationHeader from "./ConversationHeader"
+// import ConversationHeader from '../components/message/ConversationHeader'
+import ConversationFooter from './ConversationFooter'
+import ConversationBody from './ConversationBody'
 import { connect } from 'react-redux'
 import { createMessage, storeMessages } from "../../actions/MessageActions";
 

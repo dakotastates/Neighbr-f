@@ -10,7 +10,7 @@ function ConversationHeader(props) {
     <div class="card-header msg_head">
       <div class="d-flex bd-highlight">
         <div class="img_cont">
-          {props.selectedUser.profile.featured_image ? <img src={props.selectedUser.profile.featured_image.url} alt={props.selectedUser.profile.first_name} className="rounded-circle user_img"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} className="rounded-circle user_img"/>}
+          {props.selectedUser.featured_image ? <img src={props.selectedUser.featured_image.url} alt={props.selectedUser.profile.first_name} className="rounded-circle user_img"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} className="rounded-circle user_img"/>}
 
         </div>
         <div class="user_info">

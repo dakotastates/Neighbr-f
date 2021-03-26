@@ -6,6 +6,9 @@ import { connect } from 'react-redux'
 import { getProfile, updateProfile, updateProfileImage } from "../actions/ProfileActions";
 import { updateUser } from "../actions/UserActions";
 
+import ChatModalContainer from './ChatModalContainer'
+import ProfileModalContainer from './ProfileModalContainer'
+
 function ChatProfileContainer(props) {
   const [toggle, setToggle] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -38,9 +41,9 @@ if (loading === false){
 
 
       {toggle ? (
-        <Chat {...props} toggle={setToggle} />
+        <ChatModalContainer {...props} selectedUser={props.selectedUser} toggle={setToggle} />
       ) : (
-        <ProfileCard {...props} profile={props.profile} toggle={setToggle} />
+        <ProfileModalContainer {...props} profile={props.profile} toggle={setToggle} />
       )}
 
 
@@ -57,3 +60,16 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {getProfile, updateProfile, updateUser, updateProfileImage})(ChatProfileContainer);
+
+
+// {toggle ? (
+//   <Chat {...props} toggle={setToggle} />
+// ) : (
+//   <ProfileCard {...props} profile={props.profile} toggle={setToggle} />
+// )}
+
+// {!toggle ? (
+//   <ChatModalContainer {...props} toggle={setToggle} />
+// ) : (
+//   <ProfileModalContainer {...props} profile={props.profile} toggle={setToggle} />
+// )}
