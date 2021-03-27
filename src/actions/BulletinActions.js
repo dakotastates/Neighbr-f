@@ -4,8 +4,10 @@ const _bulletinObject = (state) => ({
     bulletin: state.bulletin,
     user_id: state.user_id,
     likes_attributes: [{
+      id: state.id,
       user_id: state.user_id,
-      bulletin_id: state.bulletin_id
+      bulletin_id: state.bulletin_id,
+      _destroy: state._destroy
     }]
 
   },
@@ -44,7 +46,7 @@ export const createBulletin = (state) => {
    return async (dispatch) => {
      const res = await fetch("http://localhost:3000/api/v1/bulletins", configObj);
      const json = await res.json();
-     debugger
+     // debugger
      if (json.error) {
         throw new Error(json.error /*+ " " + json.message*/);
       }

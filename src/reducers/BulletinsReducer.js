@@ -28,12 +28,7 @@ export default function BulletinsReducer(
         };
 
       case "UPDATE_BULLETIN":
-      // debugger
-      // const updateBulletins = state.bulletins.map(bulletin => {
-      //   if (bulletin.id == payload.id){
-      //     return payload
-      //   }
-      // });
+  
 
       return {
         ...state,
