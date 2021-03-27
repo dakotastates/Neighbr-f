@@ -12,7 +12,7 @@ export default function BulletinsReducer(
     // };
 
     case "CREATE_BULLETIN":
-    // debugger
+
       return {
         ...state,
         bulletin: payload,
@@ -29,10 +29,16 @@ export default function BulletinsReducer(
 
       case "UPDATE_BULLETIN":
       // debugger
+      // const updateBulletins = state.bulletins.map(bulletin => {
+      //   if (bulletin.id == payload.id){
+      //     return payload
+      //   }
+      // });
+
       return {
         ...state,
         bulletin: payload,
-        bulletins: [],
+        bulletins: state.bulletins.map(bulletin => (bulletin.id === payload.id) ? payload : bulletin),
       };
 
       case "STORAGE_BULLETINS":
@@ -40,6 +46,14 @@ export default function BulletinsReducer(
       return {
         ...state,
         bulletins: payload,
+      };
+
+      case "DELETE_BULLETIN":
+       // debugger
+      const bulletins = state.bulletins.filter(bulletin => bulletin.id !== payload.id);
+      return {
+        ...state,
+        bulletins: bulletins
       };
 
 

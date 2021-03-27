@@ -1,8 +1,13 @@
 const _bulletinObject = (state) => ({
   bulletin: {
-    id: state.id,
+    id: state.bulletin_id,
     bulletin: state.bulletin,
-    user_id: state.user_id
+    user_id: state.user_id,
+    likes_attributes: [{
+      user_id: state.user_id,
+      bulletin_id: state.bulletin_id
+    }]
+
   },
 
 });
@@ -39,7 +44,7 @@ export const createBulletin = (state) => {
    return async (dispatch) => {
      const res = await fetch("http://localhost:3000/api/v1/bulletins", configObj);
      const json = await res.json();
-     // debugger
+     debugger
      if (json.error) {
         throw new Error(json.error /*+ " " + json.message*/);
       }
@@ -53,6 +58,35 @@ export const createBulletin = (state) => {
 
 
 };
+
+// export const createLike = (state) => {
+//   // debugger
+//   let configObj = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify(_bulletinObject(state)),
+//   };
+//
+//    return async (dispatch) => {
+//      const res = await fetch("http://localhost:3000/api/v1/bulletins", configObj);
+//      const json = await res.json();
+//      debugger
+//      if (json.error) {
+//         throw new Error(json.error /*+ " " + json.message*/);
+//       }
+//       // localStorage.setItem("token", json.jwt);
+//       dispatch({
+//         type: "CREATE_BULLETIN",
+//         payload: json.bulletin,
+//       });
+//       // debugger
+//    }
+//
+//
+// };
 
 
 export const createComment = (state) => {
@@ -95,7 +129,7 @@ export const updateBulletin = (state) => {
       Accept: "application/json",
       Authorization: `Bearer ${localStorage.token}`,
     },
-    body: JSON.stringify(_likeObject(state)),
+    body: JSON.stringify(_bulletinObject(state)),
   };
 
   return async (dispatch) => {

@@ -7,6 +7,7 @@ import BulletinForm from '../components/bulletin/BulletinForm'
 import BulletinsContainer from './BulletinsContainer'
 
 
+
 function ProfileModalContainer(props) {
   const [toggleEdit, setToggleEdit] = useState(false);
 
@@ -75,13 +76,13 @@ function ProfileModalContainer(props) {
               <div class="bg-light p-4 d-flex justify-content-end text-center">
                   <ul class="list-inline mb-0">
                       <li class="list-inline-item">
-                          <h5 class="font-weight-bold mb-0 d-block">215</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
+                          <h5 class="font-weight-bold mb-0 d-block">{props.selectedUser.bulletins.length}</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Bulletins</small>
                       </li>
                       <li class="list-inline-item">
-                          <h5 class="font-weight-bold mb-0 d-block">745</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                          <h5 class="font-weight-bold mb-0 d-block">{props.selectedUser.neighborships.length}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Neighborships</small>
                       </li>
                       <li class="list-inline-item">
-                          <h5 class="font-weight-bold mb-0 d-block">340</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                          <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                       </li>
                   </ul>
               </div>
@@ -93,10 +94,9 @@ function ProfileModalContainer(props) {
                       <p class='font-italic mb-0'>{toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {props.selectedUser.email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}</p>
                   </div>
               </div>
-              
+
               <div class="container bootdey">
               <div class="col-md-12 bootstrap snippets">
-
                 <BulletinsContainer />
                 </div>
               </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm'
 import CommentsContainer from '../../containers/CommentsContainer'
-
+import LikesContainer from '../../containers/LikesContainer'
 
 function Bulletin(props) {
 
@@ -42,18 +42,27 @@ if (toggleComments) {
     <div class="panel">
       <div class="panel-body">
         <div class="media-block">
-          <a class="media-left" href="#">{props.bulletin.featured_image ? <img src={props.bulletin.featured_image.url} alt={props.bulletin.user.first_name} width="40" class="rounded-circle"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.bulletin.user.first_name} width="40" class="rounded-circle"/>}</a>
+          <a class="media-left" href="#">{props.bulletin.featured_image ? <img src={props.bulletin.featured_image.url} alt="Profile Image" width="40" class="rounded-circle"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt="Default Profile Image" width="40" class="rounded-circle"/>}</a>
           <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{props.bulletin.user.first_name} {props.bulletin.user.last_name}</span><span class="date text-black-50"> {props.bulletin.created_at}</span></div>
 
           <div class="media-body">
             <p>{props.bulletin.bulletin}</p>
             <div class="pad-ver">
+                <div class="bg-white">
+
+                  <div class="d-flex flex-row-reverse">
+
+                    <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">{props.bulletin.likes.length}</span></div>
+                    <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span onClick={handleToggleComments} class="mt-2 text-right">{props.bulletin.comments.length} Comments</span></div>
+
+                  </div>
+                </div>
 
                 <div class="bg-white">
                   <div class="d-flex flex-row fs-12">
-                    <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                    <LikesContainer currentUser={props.currentUser} bulletin={props.bulletin} />
                     <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span onClick={handleToggleComments} class="ml-1">Comment</span></div>
-                    <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+
                   </div>
                 </div>
 
@@ -122,7 +131,7 @@ export default Bulletin
 //           </div>
 
 
-
+// <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
 
 
 // <div class="profile-card gedf-card">

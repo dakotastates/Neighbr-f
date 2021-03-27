@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { storeBulletins, updateBulletin } from "../actions/BulletinActions";
+import { storeBulletins, updateBulletin, createBulletin } from "../actions/BulletinActions";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Bulletin from '../components/bulletin/Bulletin'
@@ -30,6 +30,7 @@ function BulletinsContainer(props) {
 
     })
     .catch((error) => {
+
       setError(error);
     });
 
@@ -63,7 +64,7 @@ function BulletinsContainer(props) {
 
   return (
     <div >
-    <BulletinForm />
+    <BulletinForm currentUser={props.user} createBulletin={props.createBulletin} />
     {bulletinsList}
     </div>
   );
@@ -74,4 +75,4 @@ const mapStateToProps = (state) => ({
   user: state.usersStore.user
 });
 
-export default connect(mapStateToProps, {storeBulletins, updateBulletin})(BulletinsContainer);
+export default connect(mapStateToProps, {storeBulletins, createBulletin, updateBulletin})(BulletinsContainer);
