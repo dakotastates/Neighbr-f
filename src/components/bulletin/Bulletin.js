@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm'
 import CommentsContainer from '../../containers/CommentsContainer'
 
+
 function Bulletin(props) {
 
   const [state, setState] = useState({
@@ -9,6 +10,18 @@ function Bulletin(props) {
     bulletin_id: props.bulletin.id
   });
 
+const [toggleComments, setToggleComments] = useState(false);
+
+const handleToggleComments = () =>{
+  console.log("toggle Comments")
+  setToggleComments(true)
+}
+
+let commentForm;
+
+if (toggleComments) {
+  commentForm = <div><CommentForm currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
+}
 
   // const handleLike = (e) => {
   //   e.preventDefault();
@@ -39,14 +52,14 @@ function Bulletin(props) {
                 <div class="bg-white">
                   <div class="d-flex flex-row fs-12">
                     <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-                    <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+                    <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span onClick={handleToggleComments} class="ml-1">Comment</span></div>
                     <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
                   </div>
                 </div>
 
             </div>
             <hr/>
-            <CommentsContainer bulletin={props.bulletin} />
+            {commentForm}
           </div>
         </div>
       </div>
