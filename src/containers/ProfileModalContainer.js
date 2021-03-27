@@ -93,10 +93,10 @@ function ProfileModalContainer(props) {
                       <p class='font-italic mb-0'>{toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {props.selectedUser.email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}</p>
                   </div>
               </div>
-              <RecentPhotos />
+              
               <div class="container bootdey">
               <div class="col-md-12 bootstrap snippets">
-                <BulletinForm />
+
                 <BulletinsContainer />
                 </div>
               </div>

@@ -29,11 +29,11 @@ function Bulletin(props) {
     <div class="panel">
       <div class="panel-body">
         <div class="media-block">
-          <a class="media-left" href="#"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40" /></a>
-          <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
+          <a class="media-left" href="#">{props.bulletin.featured_image ? <img src={props.bulletin.featured_image.url} alt={props.bulletin.user.first_name} width="40" class="rounded-circle"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.bulletin.user.first_name} width="40" class="rounded-circle"/>}</a>
+          <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{props.bulletin.user.first_name} {props.bulletin.user.last_name}</span><span class="date text-black-50"> {props.bulletin.created_at}</span></div>
 
           <div class="media-body">
-            <p>consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+            <p>{props.bulletin.bulletin}</p>
             <div class="pad-ver">
 
                 <div class="bg-white">
@@ -42,10 +42,11 @@ function Bulletin(props) {
                     <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
                     <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
                   </div>
-              </div>
+                </div>
 
             </div>
             <hr/>
+            <CommentsContainer bulletin={props.bulletin} />
           </div>
         </div>
       </div>

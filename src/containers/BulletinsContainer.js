@@ -4,11 +4,12 @@ import { storeBulletins, updateBulletin } from "../actions/BulletinActions";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Bulletin from '../components/bulletin/Bulletin'
+import BulletinForm from '../components/bulletin/BulletinForm'
 // import UserDrawerList from '../components/profile/UserDrawerList'
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex', 
+    display: 'flex',
     '& > * + *': {
       marginLeft: theme.spacing(2),
     },
@@ -62,6 +63,7 @@ function BulletinsContainer(props) {
 
   return (
     <div >
+    <BulletinForm />
     {bulletinsList}
     </div>
   );

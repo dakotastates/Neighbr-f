@@ -52,10 +52,10 @@ function CommentsContainer(props) {
           commentsList = props.bulletin.comments.map(comment =>{
 
            return(
-          <Comment currentUser={props.user} createComment={props.createComment} comment={comment}/>
-         )
+             <Comment currentUser={props.user} comment={comment}/>
+           )
          })
-       } 
+       }
        // }
 
 
@@ -68,8 +68,10 @@ function CommentsContainer(props) {
 }
 
 const mapStateToProps = (state) => ({
-  comments: state.bulletinsStore.comments,
+  // comments: state.bulletinsStore.comments,
   user: state.usersStore.user
 });
 
 export default connect(mapStateToProps, {createComment})(CommentsContainer);
+
+// <Comment currentUser={props.user} createComment={props.createComment} comment={comment}/>
