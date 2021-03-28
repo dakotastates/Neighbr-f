@@ -3,31 +3,42 @@ import React, { useState, useEffect } from 'react';
 function CommentForm(props) {
 
   const [state, setState] = useState({
-    comment: '',
-    user_id: props.currentUser.id,
+    id: null,
     bulletin_id: props.bulletin.id,
-    // _destroy: false
+    user_id: props.currentUser.id,
+    comment: "",
+    _destroy: false
   });
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
-    setState(state => ({ ...state, [name]: value }));
+    // debugger
+    setState(state => ( {...state, [name]: value }));
+    // debugger
+    // setState(prevState => ({
+    //   bulletin_id: prevState.bulletin_id,
+    //   comment: {
+    //     ...prevState.comment,
+    //     [name]: value
+    //   }
+    // }))
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    debugger
-    // props
-    //   .updateBulletin(state)
-    //   .then(() => {
-    //     // setLoading(true);
-    //   })
-    //   .catch((error) => {
-    //     alert(error);
-    //   });
-    // setState({
-    //   comment: ""
-    // })
+    // console.log(state)
+    // debugger
+    props
+      .createComment(state)
+      .then(() => {
+        // setLoading(true);
+      })
+      .catch((error) => {
+        alert(error);
+      });
+      setState({
+        comment: ""
+      })
   };
 
 

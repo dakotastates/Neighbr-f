@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import {updateBulletin } from "../actions/BulletinActions";
+import {createLike } from "../actions/BulletinActions";
 
 
 
@@ -32,11 +32,10 @@ function LikesContainer(props) {
 // console.log(likeId);
 
   const [state, setState] = useState({
+    id: null,
     bulletin_id: props.bulletin.id,
-    like: {id: null,
-          bulletin_id: props.bulletin.id,
-          user_id: props.currentUser.id,
-          _destroy: false}
+    user_id: props.currentUser.id,
+    _destroy: false
   });
 
 
@@ -46,7 +45,7 @@ function LikesContainer(props) {
   const handleLike = (e) =>{
     e.preventDefault()
     props
-      .updateBulletin(state)
+      .createLike(state)
       .then(()=>{
         setLike(!like)
         // console.log(props.bulletin.likes)
@@ -58,7 +57,7 @@ function LikesContainer(props) {
 
   const handleUnlike = (e) =>{
     e.preventDefault()
-    state.like._destroy = true
+    state._destroy = true
 
     const likeId = props.bulletin.likes.reduce((acc, current) => {if(current.user_id === props.currentUser.id) {return current.id}}, [])
     // debugger
@@ -67,14 +66,14 @@ function LikesContainer(props) {
     //   _destroy: true
     // })
     // console.log(state)
-    state.like.id = likeId
+    state.id = likeId
 
     props
-      .updateBulletin(state)
+      .createLike(state)
       .then(()=>{
         setLike(!like)
-        state.like.id = null
-        state.like._destroy = false
+        state.id = null
+        state._destroy = false
         // console.log(props.bulletin.likes)
         // console.log(state)
       })
@@ -113,4 +112,4 @@ function LikesContainer(props) {
 
 }
 
-export default connect(null, {updateBulletin})(LikesContainer)
+export default connect(null, {createLike})(LikesContainer)

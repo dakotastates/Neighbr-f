@@ -20,7 +20,7 @@ const handleToggleComments = () =>{
 let commentForm;
 
 if (toggleComments) {
-  commentForm = <div><CommentForm bulletin={props.bulletin} updateBulletin={props.updateBulletin} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
+  commentForm = <div><CommentForm bulletin={props.bulletin} createComment={props.createComment} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
 }
 
   // const handleLike = (e) => {

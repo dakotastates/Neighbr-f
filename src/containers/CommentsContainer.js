@@ -55,6 +55,8 @@ function CommentsContainer(props) {
              <Comment currentUser={props.user} comment={comment}/>
            )
          })
+       }else {
+         return <h3>No Comments... Yet</h3>
        }
        // }
 
