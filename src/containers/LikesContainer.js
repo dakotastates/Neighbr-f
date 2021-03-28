@@ -32,10 +32,11 @@ function LikesContainer(props) {
 // console.log(likeId);
 
   const [state, setState] = useState({
-    id: "",
     bulletin_id: props.bulletin.id,
-    user_id: props.currentUser.id,
-    _destroy: false
+    like: {id: null,
+          bulletin_id: props.bulletin.id,
+          user_id: props.currentUser.id,
+          _destroy: false}
   });
 
 
@@ -47,7 +48,8 @@ function LikesContainer(props) {
     props
       .updateBulletin(state)
       .then(()=>{
-
+        setLike(!like)
+        // console.log(props.bulletin.likes)
       })
       .catch(()=>{
 
@@ -56,7 +58,7 @@ function LikesContainer(props) {
 
   const handleUnlike = (e) =>{
     e.preventDefault()
-    state._destroy = true
+    state.like._destroy = true
 
     const likeId = props.bulletin.likes.reduce((acc, current) => {if(current.user_id === props.currentUser.id) {return current.id}}, [])
     // debugger
@@ -65,12 +67,16 @@ function LikesContainer(props) {
     //   _destroy: true
     // })
     // console.log(state)
-    state.id = likeId
+    state.like.id = likeId
 
     props
       .updateBulletin(state)
       .then(()=>{
-        setLike(false)
+        setLike(!like)
+        state.like.id = null
+        state.like._destroy = false
+        // console.log(props.bulletin.likes)
+        // console.log(state)
       })
       .catch(()=>{
 
@@ -80,12 +86,12 @@ function LikesContainer(props) {
   useEffect(() => {
   props.bulletin.likes.map(like =>{
     if(like.user_id === props.currentUser.id){
-
       setLike(true)
+      // console.log(props.bulletin.likes)
     }
   })
 
-}, [props.bulletin.likes]);
+}, [like]);
 
 
   let likeBtn;

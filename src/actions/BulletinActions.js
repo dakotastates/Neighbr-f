@@ -4,11 +4,18 @@ const _bulletinObject = (state) => ({
     bulletin: state.bulletin,
     user_id: state.user_id,
     likes_attributes: [{
-      id: state.id,
-      user_id: state.user_id,
-      bulletin_id: state.bulletin_id,
-      _destroy: state._destroy
-    }]
+      id: state.like.id,
+      user_id: state.like.user_id,
+      bulletin_id: state.like.bulletin_id,
+      _destroy: state.like._destroy
+    }],
+    // comments_attributes: [{
+    //   id: state.commentId,
+    //   comment: state.comment,
+    //   user_id: state.userId,
+    //   bulletin_id: state.bulletin_id,
+    //   // _destroy: state._destroy
+    // }]
 
   },
 
