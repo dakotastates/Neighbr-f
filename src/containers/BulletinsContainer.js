@@ -48,15 +48,30 @@ function BulletinsContainer(props) {
         )
        } else {
          // debugger
+         let bulletins
           if (props.bulletins.length > 0){
-          bulletinsList = props.bulletins.map(bulletin =>{
 
-           return(
-          <Bulletin currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
-         )
-         })
+            if(props.selectedUser){
+              // debugger
+              bulletins = props.bulletins.filter(bulletin=> bulletin.user.id === props.selectedUser.id).reverse()
+              // bulletins = props.selectedUser.bulletins
+            } else{
+              bulletins = props.bulletins.reverse()
+            }
+
+            // if (bulletins.length > 0){
+              bulletinsList = bulletins.map(bulletin =>{
+               return(
+                <Bulletin currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
+               )
+             })
+           // } else{
+           //   return <h5>No Bulletins for {props.selectedUser.first_name}... Yet!</h5>
+           // }
+
+
        } else {
-         return <h3>No Bulletins... Yet</h3>
+         return <h3>No Bulletins</h3>
        }
        }
 

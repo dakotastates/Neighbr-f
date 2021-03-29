@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm'
+import Avatar from '@material-ui/core/Avatar';
 
 function Comment(props) {
 
@@ -31,11 +32,13 @@ function Comment(props) {
     commentForm = <CommentForm currentUser={props.currentUser}/>
   }
 
+  // <Avatar alt="Profile Image" src={props.comment.featured_image.url}/>
+  // <Avatar>{props.commnet.user.first_name.charAt(0)}</Avatar>
 
   return (
     <div>
       <div class="media-block">
-        <a class="media-left" href="#">{props.comment.featured_image ? <img src={props.comment.featured_image.url} alt={props.comment.user.first_name} width="40" class="rounded-circle"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.comment.user.first_name} width="40" class="rounded-circle"/>}</a>
+        <a class="media-left" href="#">{props.comment.featured_image ? <Avatar alt="Profile Image" src={props.comment.featured_image.url}/> : <Avatar>{props.commnet.user.first_name.charAt(0)}</Avatar>}</a>
         <div class="media-body">
           <div class="mar-btm">
             <a href="#" class="btn-link text-semibold media-heading box-inline">{props.comment.user.first_name} {props.comment.user.last_name}</a>
@@ -44,11 +47,7 @@ function Comment(props) {
           <p>{props.comment.comment}</p>
           <div class="pad-ver">
             <div class="bg-white">
-              <div class="d-flex flex-row fs-12">
-                <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-                <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span onClick={handleToggleComments} class="ml-1">Comment</span></div>
-                <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
-              </div>
+
               {commentForm}
             </div>
           </div>
@@ -79,4 +78,10 @@ export default Comment
 //          <a href="#" class="anchor-time">51 mins</a>
 //        </div>
 //      </div>
+// </div>
+
+// <div class="d-flex flex-row fs-12">
+//   <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+//   <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span onClick={handleToggleComments} class="ml-1">Comment</span></div>
+//   <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
 // </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm'
 import CommentsContainer from '../../containers/CommentsContainer'
 import LikesContainer from '../../containers/LikesContainer'
+import Avatar from '@material-ui/core/Avatar';
 
 function Bulletin(props) {
 
@@ -20,7 +21,7 @@ const handleToggleComments = () =>{
 let commentForm;
 
 if (toggleComments) {
-  commentForm = <div><CommentForm bulletin={props.bulletin} createComment={props.createComment} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
+  commentForm = <div><CommentForm setToggleComments={setToggleComments} bulletin={props.bulletin} createComment={props.createComment} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
 }
 
   // const handleLike = (e) => {
@@ -37,12 +38,14 @@ if (toggleComments) {
   //
   // };
 
-
+// <Avatar alt="Profile Image" src={props.bulletin.featured_image.url}/>
+// <Avatar>{props.bulletin.user.first_name.charAt(0)}</Avatar>
   return (
     <div class="panel">
       <div class="panel-body">
         <div class="media-block">
-          <a class="media-left" href="#">{props.bulletin.featured_image ? <img src={props.bulletin.featured_image.url} alt="Profile Image" width="40" class="rounded-circle"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt="Default Profile Image" width="40" class="rounded-circle"/>}</a>
+
+          <a class="media-left" href="#">{props.bulletin.featured_image ? <Avatar alt="Profile Image" src={props.bulletin.featured_image.url}/> : <Avatar>{props.bulletin.user.first_name.charAt(0)}</Avatar>}</a>
           <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{props.bulletin.user.first_name} {props.bulletin.user.last_name}</span><span class="date text-black-50"> {props.bulletin.created_at}</span></div>
 
           <div class="media-body">
@@ -244,3 +247,9 @@ export default Bulletin
 //               </div>
 //           </div>
 //           </div>
+
+
+
+
+
+// <img src={props.bulletin.featured_image.url} alt="Profile Image" width="40" class="rounded-circle"/>

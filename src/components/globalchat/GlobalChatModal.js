@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ProfilePostCard from '../profile/ProfilePostCard'
 import ProfilePostForm from '../profile/ProfilePostForm'
 import BulletinExample from '../bulletin/BulletinExample'
+import BulletinsContainer from '../../containers/BulletinsContainer'
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -60,8 +61,7 @@ function GlobalChatModal(props) {
         </div>
         <div class="card-body msg_card_body">
           <div class="bg-white shadow rounded overflow-hidden">
-            <ProfilePostForm currentUser={props.currentUser}/>
-            <BulletinExample />
+            <BulletinsContainer />
           </div>
         </div>
         <div class="card-footer">
@@ -98,3 +98,21 @@ function GlobalChatModal(props) {
 export default GlobalChatModal
 
 // <ProfilePostCard />
+
+
+// <div class="col-md-8 col-xl-6 chat">
+//   <div class="card"  >
+//     <div class="card-header msg_head">
+//       Global Chat
+//     </div>
+//     <div class="card-body msg_card_body">
+//       <div class="bg-white shadow rounded overflow-hidden">
+//         <ProfilePostForm currentUser={props.currentUser}/>
+//         <BulletinExample />
+//       </div>
+//     </div>
+//     <div class="card-footer">
+//     Footer
+//     </div>
+//   </div>
+// </div>

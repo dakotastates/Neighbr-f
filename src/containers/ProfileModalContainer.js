@@ -89,7 +89,7 @@ function ProfileModalContainer(props) {
               <div class="px-4 py-3">
                   <h5 class="mb-0">About</h5>
                   <div class="p-4 rounded shadow-sm bg-light">
-                      <p class="font-italic mb-0">{toggleForm.occupations ? <div> <EditProfile data={"occupations"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/></div> :  <div> Occupation: {props.selectedUser.profile.occupations.last}  {toggleEdit ? <button name="occupations" onClick={handleEdit}>Edit Occupation</button> : null}<br/> </div>}</p>
+
                       <p class="font-italic mb-0">{toggleForm.bio ? <div> <EditProfile data={"bio"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Bio: {props.selectedUser.profile.bio}  {toggleEdit ? <button name="bio" onClick={handleEdit}>Edit Bio</button> : null}<br/> </div>}</p>
                       <p class='font-italic mb-0'>{toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {props.selectedUser.email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}</p>
                   </div>
@@ -97,7 +97,7 @@ function ProfileModalContainer(props) {
 
               <div class="container bootdey">
               <div class="col-md-12 bootstrap snippets">
-                <BulletinsContainer />
+                <BulletinsContainer selectedUser={props.selectedUser}/>
                 </div>
               </div>
           </div>
@@ -112,3 +112,7 @@ function ProfileModalContainer(props) {
 
 
 export default ProfileModalContainer;
+
+
+
+// <p class="font-italic mb-0">{toggleForm.occupations ? <div> <EditProfile data={"occupations"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/></div> :  <div> Occupation: {props.selectedUser.profile.occupations.last}  {toggleEdit ? <button name="occupations" onClick={handleEdit}>Edit Occupation</button> : null}<br/> </div>}</p>
