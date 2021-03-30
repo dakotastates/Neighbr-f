@@ -32,6 +32,11 @@ function Comment(props) {
     commentForm = <CommentForm currentUser={props.currentUser}/>
   }
 
+  let deletebtn;
+  if(props.currentUser.id === props.comment.user.id){
+    deletebtn= <span class="btn btn-trans btn-icon fa fa-trash add-tooltip" href="#"></span>
+  }
+
   // <Avatar alt="Profile Image" src={props.comment.featured_image.url}/>
   // <Avatar>{props.commnet.user.first_name.charAt(0)}</Avatar>
 
@@ -43,11 +48,15 @@ function Comment(props) {
           <div class="mar-btm">
             <a href="#" class="btn-link text-semibold media-heading box-inline">{props.comment.user.first_name} {props.comment.user.last_name}</a>
             <p class="text-muted text-sm"><i class="fa fa-mobile fa-lg"></i> {props.comment.created_at}</p>
+            <div class="d-flex flex-row-reverse">
+              {deletebtn}
+            </div>
+
           </div>
+
           <p>{props.comment.comment}</p>
           <div class="pad-ver">
             <div class="bg-white">
-
               {commentForm}
             </div>
           </div>

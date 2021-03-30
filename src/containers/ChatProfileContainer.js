@@ -43,7 +43,7 @@ if (loading === false){
       {toggle ? (
         <ChatModalContainer {...props} selectedUser={props.selectedUser} toggle={setToggle} />
       ) : (
-        <ProfileModalContainer {...props} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggle} />
+        <ProfileModalContainer {...props} updateProfileImage={props.updateProfileImage} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggle} />
       )}
 
 

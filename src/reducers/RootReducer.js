@@ -6,6 +6,7 @@ import ModalReducer from "./ModalReducer";
 import MessagesReducer from "./MessagesReducer";
 import ProfileReducer from "./ProfileReducer";
 import BulletinsReducer from "./BulletinsReducer";
+import NeighborshipsReducer from "./NeighborshipsReducer";
 
 
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   modalStore: ModalReducer,
   messagesStore: MessagesReducer,
   profileStore: ProfileReducer,
-  bulletinsStore: BulletinsReducer
+  bulletinsStore: BulletinsReducer,
+  neighborshipsStore: NeighborshipsReducer
 
 
 });

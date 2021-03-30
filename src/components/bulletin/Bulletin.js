@@ -24,6 +24,11 @@ if (toggleComments) {
   commentForm = <div><CommentForm setToggleComments={setToggleComments} bulletin={props.bulletin} createComment={props.createComment} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
 }
 
+let deletebtn;
+if(props.currentUser.id === props.bulletin.user.id){
+  deletebtn= <span class="btn btn-trans btn-icon fa fa-trash add-tooltip" ></span>
+}
+
   // const handleLike = (e) => {
   //   e.preventDefault();
   //   // debugger
@@ -47,7 +52,9 @@ if (toggleComments) {
 
           <a class="media-left" href="#">{props.bulletin.featured_image ? <Avatar alt="Profile Image" src={props.bulletin.featured_image.url}/> : <Avatar>{props.bulletin.user.first_name.charAt(0)}</Avatar>}</a>
           <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">{props.bulletin.user.first_name} {props.bulletin.user.last_name}</span><span class="date text-black-50"> {props.bulletin.created_at}</span></div>
-
+            <div class="d-flex flex-row-reverse">
+              {deletebtn}
+            </div>
           <div class="media-body">
             <p>{props.bulletin.bulletin}</p>
             <div class="pad-ver">
