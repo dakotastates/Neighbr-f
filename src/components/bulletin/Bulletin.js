@@ -24,9 +24,22 @@ if (toggleComments) {
   commentForm = <div><CommentForm setToggleComments={setToggleComments} bulletin={props.bulletin} createComment={props.createComment} currentUser={props.currentUser}/><CommentsContainer bulletin={props.bulletin} /></div>
 }
 
+const handleDelete = (e) =>{
+  e.preventDefault();
+
+  props
+    .deleteBulletin(state)
+    .then(() => {
+      // setLoading(true);
+    })
+    .catch((error) => {
+      alert(error);
+    });
+}
+
 let deletebtn;
 if(props.currentUser.id === props.bulletin.user.id){
-  deletebtn= <span class="btn btn-trans btn-icon fa fa-trash add-tooltip" ></span>
+  deletebtn= <span onClick={handleDelete} class="btn btn-trans btn-icon fa fa-trash add-tooltip" ></span>
 }
 
   // const handleLike = (e) => {

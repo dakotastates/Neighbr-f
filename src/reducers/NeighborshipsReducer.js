@@ -10,17 +10,26 @@ export default function NeighborshipsReducer(
       return {
         ...state,
         neighborship: payload,
+        neighborships: [...state.neighborships, payload]
 
       };
 
-      case "STORAGE_NEIGHBORSHIP":
+      case "STORAGE_NEIGHBORSHIPS":
       // debugger
       return {
         ...state,
         neighborships: payload,
       };
 
-    
+      case "DELETE_NEIGHBORSHIP":
+       // debugger
+      const neighborships = state.neighborships.filter(neighborship => neighborship.id !== payload.id);
+      return {
+        ...state,
+        neighborships: neighborships
+      };
+
+
 
     default:
       return state;

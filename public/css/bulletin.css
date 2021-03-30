@@ -136,3 +136,9 @@
 .mar-top {
     margin-top: 15px;
 }
+
+
+
+.checked {
+  color: orange;
+}

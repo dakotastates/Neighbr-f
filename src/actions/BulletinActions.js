@@ -233,3 +233,32 @@ export const storeBulletins = (state) => {
     });
   };
 };
+
+export const deleteBulletin = (state) => {
+  // debugger
+  // console.log(state)
+  let options = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      // Authorization: `Bearer ${localStorage.token}`,
+    },
+    // body: JSON.stringify(_problemObject(state)),
+  };
+
+  return async (dispatch) => {
+    // eslint-disable-next-line
+    const res = await fetch("http://localhost:3000/api/v1/bulletins" + `/${state.bulletin_id}`, options);
+
+    const json = await res.json();
+    // debugger
+    if (json.errors) {
+      throw new Error(json.errors /*+ " " + json.message*/);
+    }
+    dispatch({
+      type: "DELETE_BULLETIN",
+      payload: json,
+    });
+  };
+};

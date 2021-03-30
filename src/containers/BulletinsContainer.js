@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
-import { storeBulletins, updateBulletin, createBulletin, createComment } from "../actions/BulletinActions";
+import { storeBulletins, updateBulletin, createBulletin, createComment, deleteBulletin } from "../actions/BulletinActions";
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Bulletin from '../components/bulletin/Bulletin'
@@ -62,7 +62,7 @@ function BulletinsContainer(props) {
             // if (bulletins.length > 0){
               bulletinsList = bulletins.map(bulletin =>{
                return(
-                <Bulletin currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
+                <Bulletin deleteBulletin={props.deleteBulletin} currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
                )
              })
            // } else{
@@ -90,4 +90,4 @@ const mapStateToProps = (state) => ({
   user: state.usersStore.user
 });
 
-export default connect(mapStateToProps, {storeBulletins, createBulletin, createComment, updateBulletin})(BulletinsContainer);
+export default connect(mapStateToProps, {storeBulletins, createBulletin, createComment, updateBulletin, deleteBulletin})(BulletinsContainer);

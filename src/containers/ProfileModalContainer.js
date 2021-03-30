@@ -6,13 +6,21 @@ import BulletinExample from '../components/bulletin/BulletinExample'
 import BulletinForm from '../components/bulletin/BulletinForm'
 import BulletinsContainer from './BulletinsContainer'
 import EditProfileImage from '../components/profile/EditProfileImage'
+import CircularProgress from '@material-ui/core/CircularProgress';
 // import NeighborshipsContainer from './NeighborshipsContainer'
 import NeighborshipPopover from '../components/profile/NeighborshipPopover'
+import NeighborshippedPopover from '../components/profile/NeighborshippedPopover'
+import { connect } from 'react-redux'
+import { createNeighborship, storeNeighborships, deleteNeighborship } from "../actions/NeighborshipActions";
+import CreateNeighborship from '../components/profile/CreateNeighborship'
 
 
 
 function ProfileModalContainer(props) {
   const [toggleEdit, setToggleEdit] = useState(false);
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const handleToggle = () =>{
     props.toggle(true)
@@ -64,11 +72,34 @@ function ProfileModalContainer(props) {
   //
   // }
 
-  let followBtn;
-  if (props.currentUser.id != props.selectedUser.id){
-    followBtn = <span  class="btn btn-trans aria-hidden='true' btn-icon fa fa-star-o " ></span>
-  }
 
+
+  useEffect(() => {
+    props
+    .storeNeighborships()
+    .then(() => {
+      setLoading(true);
+
+    })
+    .catch((error) => {
+
+      setError(error);
+    });
+
+  }, []);
+
+let neighborshipped;
+  if (loading === false){
+        return(
+          <div><CircularProgress /></div>
+        )
+      } else if (error){
+        return(
+          <div>Unable to Load Bulletins.</div>
+        )
+      } else{
+        neighborshipped = <NeighborshippedPopover neighborships={props.neighborships} selectedUser={props.selectedUser}/>
+      }
 
 // debugger
   return(
@@ -89,7 +120,7 @@ function ProfileModalContainer(props) {
                       <div class="media-body mb-5 text-white">
                           <h4 class="mt-0 mb-0">{toggleForm.name ? <div> <EditUser data={"name"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> {props.selectedUser.first_name} {props.selectedUser.middle_name} {props.selectedUser.last_name}  {toggleEdit ? <button name="name" onClick={handleEdit}>Edit Name</button> : null}<br/> </div>}</h4>
                           <div class="d-flex flex-row-reverse">
-                            {followBtn}
+                            <CreateNeighborship neighborships={props.neighborships} selectedUser={props.selectedUser} currentUser={props.currentUser} createNeighborship={props.createNeighborship} deleteNeighborship={props.deleteNeighborship}/>
                           </div>
 
                           <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>{toggleForm.city ? <div> <EditProfile data={"city"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> {props.selectedUser.profile.city.city}  {toggleEdit ? <button name="city" onClick={handleEdit}>Edit Current Location</button> : null}<br/> </div>}</p>
@@ -105,7 +136,7 @@ function ProfileModalContainer(props) {
                         <NeighborshipPopover selectedUser={props.selectedUser} />
                       </li>
                       <li class="list-inline-item">
-                          <h5 class="font-weight-bold mb-0 d-block">0</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        {neighborshipped}
                       </li>
                   </ul>
               </div>
@@ -133,9 +164,11 @@ function ProfileModalContainer(props) {
 
 }
 
+const mapStateToProps = (state) => ({
+  neighborships: state.neighborshipsStore.neighborships,
+});
 
-
-export default ProfileModalContainer;
+export default connect(mapStateToProps, {createNeighborship, storeNeighborships, deleteNeighborship})(ProfileModalContainer);
 
 
 // <li class="list-inline-item"  >
