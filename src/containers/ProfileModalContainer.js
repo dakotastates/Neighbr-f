@@ -13,6 +13,7 @@ import NeighborshippedPopover from '../components/profile/NeighborshippedPopover
 import { connect } from 'react-redux'
 import { createNeighborship, storeNeighborships, deleteNeighborship } from "../actions/NeighborshipActions";
 import CreateNeighborship from '../components/profile/CreateNeighborship'
+import EditPhotoPopover from '../components/profile/EditPhotoPopover'
 
 
 
@@ -28,12 +29,14 @@ function ProfileModalContainer(props) {
 
   const handleEditBtn = () =>{
     setToggleEdit(true)
+    setToggleForm(toggleForm => ({ ...toggleForm, image: true }));
+
     // debugger
   }
 
   const handleShowBtn = () =>{
     setToggleEdit(false)
-
+    setToggleForm(toggleForm => ({ ...toggleForm, image: false }));
     // debugger
   }
 
@@ -111,9 +114,9 @@ let neighborshipped;
                   <div class="media align-items-end profile-head">
                       <div class="profile mr-3">
                         {toggleForm.image ?
-                          <div> <EditProfileImage updateProfile={props.updateProfile} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggleForm}/> </div>
+                          <div> <EditPhotoPopover updateProfileImage={props.updateProfileImage} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggleForm}/> </div>
                           :
-                          <div> {props.selectedUser.featured_image ? <img src={props.selectedUser.featured_image.url} alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/>}  <br/>{toggleEdit ? <button name="image" onClick={handleEdit}>Edit Image</button> : null}<br/> </div>}
+                          <div> {props.selectedUser.featured_image ? <img src={props.selectedUser.featured_image.url} alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/>}   </div>}
 
                         {btnChatEdit}
                       </div>
@@ -170,6 +173,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {createNeighborship, storeNeighborships, deleteNeighborship})(ProfileModalContainer);
 
+// <div> <EditProfileImage updateProfileImage={props.updateProfileImage} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggleForm}/> </div>
+
 
 // <li class="list-inline-item"  >
 //     <h5 class="font-weight-bold mb-0 d-block " >{props.selectedUser.neighborships.length}</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Neighborships</small>
@@ -177,3 +182,5 @@ export default connect(mapStateToProps, {createNeighborship, storeNeighborships,
 
 
 // <p class="font-italic mb-0">{toggleForm.occupations ? <div> <EditProfile data={"occupations"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/></div> :  <div> Occupation: {props.selectedUser.profile.occupations.last}  {toggleEdit ? <button name="occupations" onClick={handleEdit}>Edit Occupation</button> : null}<br/> </div>}</p>
+
+// <br/>{toggleEdit ? <button name="image" onClick={handleEdit}>Edit Image</button> : null}<br/>

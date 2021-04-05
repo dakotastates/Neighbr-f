@@ -63,7 +63,7 @@ export const updateProfileImage = (formData, user_id, profile_id) => {
     const res = await fetch("http://localhost:3000/api/v1/users" + `/${user_id}/profiles` + `/${profile_id}`, options);
 
     const json = await res.json();
-    debugger
+    // debugger
     if (json.errors) {
       throw new Error(json.errors /*+ " " + json.message*/);
     }

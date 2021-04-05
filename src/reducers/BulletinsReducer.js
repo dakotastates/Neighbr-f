@@ -28,7 +28,7 @@ export default function BulletinsReducer(
         };
 
       case "UPDATE_BULLETIN":
-  
+
 
       return {
         ...state,

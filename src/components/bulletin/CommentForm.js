@@ -33,13 +33,17 @@ function CommentForm(props) {
       .createComment(state)
       .then(() => {
         // setLoading(true);
+        // setState({
+        //   comment: ""
+        // })
+        setState({
+          comment: ""
+        })
       })
       .catch((error) => {
         alert(error);
       });
-      setState({
-        comment: ""
-      })
+
   };
 
   // <Avatar alt="Profile Image" src={props.currentUser.featured_image.url}/>
@@ -48,7 +52,7 @@ function CommentForm(props) {
     <div class="bg-light p-2">
         <div class="d-flex flex-row align-items-start">
           {props.currentUser.featured_image ? <Avatar alt="Profile Image" src={props.currentUser.featured_image.url}/> : <Avatar>{props.currentUser.first_name.charAt(0)}</Avatar>}
-          <textarea onChange={handleOnChange} name="comment" class="form-control ml-1 shadow-none textarea"></textarea>
+          <textarea onChange={handleOnChange} value={state.comment} placeholder="Write a Comment!" name="comment" class="form-control ml-1 shadow-none textarea"></textarea>
         </div>
         <div class="mt-2 text-right">
           <button class="btn btn-primary btn-sm shadow-none" onClick={onSubmit} type="button">Post comment</button>

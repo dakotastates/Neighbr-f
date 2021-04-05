@@ -3,12 +3,12 @@ const _bulletinObject = (state) => ({
     id: state.bulletin_id,
     bulletin: state.bulletin,
     user_id: state.user_id,
-    likes_attributes: [{
-      id: state.like.id,
-      user_id: state.like.user_id,
-      bulletin_id: state.like.bulletin_id,
-      _destroy: state.like._destroy
-    }],
+    // likes_attributes: [{
+    //   id: state.like.id,
+    //   user_id: state.like.user_id,
+    //   bulletin_id: state.like.bulletin_id,
+    //   _destroy: state.like._destroy
+    // }],
     // comments_attributes: [{
     //   id: state.comment.id,
     //   comment: state.comment.comment,

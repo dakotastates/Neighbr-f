@@ -21,6 +21,7 @@ function Messages(props) {
        scrollToBottom()
    }, [])
 
+
   const messageList = messages.map(message => {
     return (
       <div>
@@ -41,7 +42,11 @@ function Messages(props) {
       </div>
     );
   } else {
-    return (<h2>Start of Conversation!</h2>)
+    return (
+      <div>
+        <h2>Start of Conversation!</h2>
+        <div ref={bottomRef} className="list-bottom"></div>
+      </div>)
   }
 
 

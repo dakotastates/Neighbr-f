@@ -53,10 +53,10 @@ function BulletinsContainer(props) {
 
             if(props.selectedUser){
               // debugger
-              bulletins = props.bulletins.filter(bulletin=> bulletin.user.id === props.selectedUser.id).reverse()
+              bulletins = props.bulletins.filter(bulletin=> bulletin.user.id === props.selectedUser.id)
               // bulletins = props.selectedUser.bulletins
             } else{
-              bulletins = props.bulletins.reverse()
+              bulletins = props.bulletins
             }
 
             // if (bulletins.length > 0){
