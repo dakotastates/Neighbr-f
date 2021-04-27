@@ -100,7 +100,7 @@ export const addImage = (formData, user_id, profile_id) => {
 };
 
 export const updateProfile = (state) => {
-  debugger
+  // debugger
   // console.log(state)
   let options = {
     method: "PATCH",

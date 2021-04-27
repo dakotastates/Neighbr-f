@@ -57,16 +57,16 @@ function GlobalChatModal(props) {
     <div class="col-md-8 col-xl-6 chat">
       <div class="card"  >
         <div class="card-header msg_head">
-          Global Chat
+          Neighborhood Bulletin Board
         </div>
         <div class="card-body msg_card_body">
           <div class="bg-white shadow rounded overflow-hidden">
             <BulletinsContainer />
           </div>
         </div>
-        <div class="card-footer">
-        Footer
-        </div>
+
+
+
       </div>
     </div>
   );

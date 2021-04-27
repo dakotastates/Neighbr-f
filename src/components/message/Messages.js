@@ -43,7 +43,7 @@ function Messages(props) {
     );
   } else {
     return (
-      <div>
+      <div class="card-body msg_card_body">
         <h2>Start of Conversation!</h2>
         <div ref={bottomRef} className="list-bottom"></div>
       </div>)

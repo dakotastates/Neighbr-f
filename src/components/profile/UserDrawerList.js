@@ -23,8 +23,8 @@ function UserDrawerList(props) {
   };
 
   return (
-    <div>
-    <ListItem button key={props.selectedUser.id} onClick={handleOpen}>
+    <div >
+    <ListItem button onClick={handleOpen}>
       <ListItemIcon>{props.selectedUser.profile.featured_image ? <Avatar alt={props.selectedUser.first_name} src={props.selectedUser.profile.featured_image.url}/> : <Avatar>{props.selectedUser.first_name.charAt(0)}</Avatar> }</ListItemIcon>
       <ListItemText primary={props.selectedUser.first_name} />
    </ListItem>

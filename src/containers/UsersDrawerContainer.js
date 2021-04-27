@@ -87,7 +87,9 @@ function UsersDrawerContainer(props) {
           sortedByDist = sortByDist.map(user =>{
             // debugger
           return(
-            <UserDrawerList key={user.id} currentUser={props.user} selectedUser={user.user}/>
+            <React.Fragment key={user.id}>
+              <UserDrawerList  currentUser={props.user} selectedUser={user.user}/>
+            </React.Fragment>
         )
         })
        }

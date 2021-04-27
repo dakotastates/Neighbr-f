@@ -43,7 +43,7 @@ function Comment(props) {
   return (
     <div>
       <div class="media-block">
-        <a class="media-left" href="#">{props.comment.featured_image ? <Avatar alt="Profile Image" src={props.comment.featured_image.url}/> : <Avatar>{props.commnet.user.first_name.charAt(0)}</Avatar>}</a>
+        <a class="media-left" href="#">{props.comment.featured_image ? <Avatar alt="Profile Image" src={props.comment.featured_image.url}/> : <Avatar>{props.comment.user.first_name.charAt(0)}</Avatar>}</a>
         <div class="media-body">
           <div class="mar-btm">
             <a href="#" class="btn-link text-semibold media-heading box-inline">{props.comment.user.first_name} {props.comment.user.last_name}</a>

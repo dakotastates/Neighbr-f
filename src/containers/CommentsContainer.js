@@ -49,10 +49,10 @@ function CommentsContainer(props) {
   //      } else {
          // debugger
           if (props.bulletin.comments.length > 0){
-          commentsList = props.bulletin.comments.map(comment =>{
+          commentsList = [...props.bulletin.comments].reverse().map(comment =>{
 
            return(
-             <Comment currentUser={props.user} comment={comment}/>
+             <Comment key={comment.id} currentUser={props.user} comment={comment}/>
            )
          })
        }else {

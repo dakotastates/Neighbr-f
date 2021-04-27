@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
     },
   },
+  // bulletin: {
+  //   flexDirection:'column-reverse'
+  // }
 }));
 
 function BulletinsContainer(props) {
@@ -60,9 +63,9 @@ function BulletinsContainer(props) {
             }
 
             // if (bulletins.length > 0){
-              bulletinsList = bulletins.map(bulletin =>{
+              bulletinsList = [...bulletins].reverse().map(bulletin =>{
                return(
-                <Bulletin deleteBulletin={props.deleteBulletin} currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
+                  <Bulletin key={bulletin.id} deleteBulletin={props.deleteBulletin} currentUser={props.user} createComment={props.createComment} updateBulletin={props.updateBulletin} bulletin={bulletin}/>
                )
              })
            // } else{

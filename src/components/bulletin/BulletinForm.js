@@ -35,7 +35,7 @@ function BulletinForm(props) {
   return (
     <div class="panel">
         <div class="panel-body">
-          <textarea class="form-control" name="bulletin" rows="2" onChange={handleOnChange} placeholder="Post a Bulletin!"></textarea>
+          <textarea class="form-control" value={state.bulletin} name="bulletin" rows="2" onChange={handleOnChange} placeholder="Post a Bulletin!"></textarea>
           <div class="mar-top clearfix">
             <button class="btn btn-sm btn-primary pull-right" onClick={onSubmit} type="submit"><i class="fa fa-pencil fa-fw"></i> Share</button>
             <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>

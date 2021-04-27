@@ -116,7 +116,7 @@ let neighborshipped;
                         {toggleForm.image ?
                           <div> <EditPhotoPopover updateProfileImage={props.updateProfileImage} selectedUser={props.selectedUser} profile={props.profile} toggle={setToggleForm}/> </div>
                           :
-                          <div> {props.selectedUser.featured_image ? <img src={props.selectedUser.featured_image.url} alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/>}   </div>}
+                          <div> {props.profile.featured_image ? <img src={props.profile.featured_image.url} alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/> : <img src='https://comotion.uw.edu/wp-content/uploads/2019/05/generic-profile.png' alt={props.selectedUser.profile.first_name} width="130" class="rounded mb-2 img-thumbnail"/>}   </div>}
 
                         {btnChatEdit}
                       </div>
@@ -148,7 +148,7 @@ let neighborshipped;
                   <div class="p-4 rounded shadow-sm bg-light">
 
 
-                      <p class="font-italic mb-0">{toggleForm.bio ? <div> <EditProfile data={"bio"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Bio: {props.selectedUser.profile.bio}  {toggleEdit ? <button name="bio" onClick={handleEdit}>Edit Bio</button> : null}<br/> </div>}</p>
+                      <p class="font-italic mb-0">{toggleForm.bio ? <div> <EditProfile data={"bio"} updateProfile={props.updateProfile} profile={props.profile} toggle={setToggleForm}/> </div> :  <div> Bio: {props.profile.bio}  {toggleEdit ? <button name="bio" onClick={handleEdit}>Edit Bio</button> : null}<br/> </div>}</p>
                       <p class='font-italic mb-0'>{toggleForm.email ? <div> <EditUser data={"email"} updateUser={props.updateUser} profile={props.profile} toggle={setToggleForm}/></div> : <div> Email: {props.selectedUser.email} {toggleEdit ? <button name="email" onClick={handleEdit}>Edit Email</button> : null}<br/></div>}</p>
                   </div>
               </div>

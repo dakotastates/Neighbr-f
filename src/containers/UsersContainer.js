@@ -39,7 +39,7 @@ function UsersContainer(props) {
 
          const userList = users.map(user => {
            return (
-              <ProfileListCard user={user} />
+              <ProfileListCard key={user.id} user={user} />
            )
          });
 
